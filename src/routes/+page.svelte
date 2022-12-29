@@ -1,9 +1,9 @@
 <script>
+	import { base } from '$app/paths';
 	import Cake from '$lib/components/cake.svelte';
 	import { generateCake } from '$lib/helpers/cakeGenerator';
-	import { escape } from 'svelte/internal';
 
-	const items = new Array(36).fill(0).map((a, i) => generateCake());
+	const items = new Array(36).fill(0).map((a, i) => generateCake(true, Math.floor(Math.random() * 100)));
 </script>
 
 <svelte:head>
@@ -20,7 +20,7 @@
 
 	<div class="bakery">
 		{#each items as cake}
-			<a href="./bake?data={encodeURIComponent(JSON.stringify(cake))}" class="cake">
+			<a href="{base}/bake?data={encodeURIComponent(JSON.stringify(cake))}" class="cake">
 				<Cake {cake} />
 			</a>
 		{/each}

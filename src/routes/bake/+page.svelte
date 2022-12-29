@@ -29,6 +29,7 @@
 	let recreateCake = () => {
 		cake = { ...generateCake(false), style: cake.style, midSection: cake.midSection };
 	};
+	
 	let recreateMonoCake = (light: string = '#ffffff', dark: string = '#000000') => {
 		const defaultCake = {
 			...generateCake(false),

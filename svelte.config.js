@@ -1,14 +1,29 @@
-import adapter from '@sveltejs/adapter-auto';
-import { vitePreprocess } from '@sveltejs/kit/vite';
+import preprocess from 'svelte-preprocess';
+import adapter from '@sveltejs/adapter-static';
+const dev = process.env.NODE_ENV === 'development';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	// Consult https://kit.svelte.dev/docs/integrations#preprocessors
+	// Consult https://github.com/sveltejs/svelte-preprocess
 	// for more information about preprocessors
-	preprocess: vitePreprocess(),
-
+	preprocess: preprocess(),
 	kit: {
-		adapter: adapter()
+		adapter: adapter({
+			// default options are shown
+			pages: 'docs',
+			assets: 'docs',
+			precompress: false,
+			fallback: 'index.html',
+			path: ''
+		}),
+		paths: {
+			base: dev ? '' : '/cheesecake-by-mona',
+			assets: 'https://martin-havala.github.io/cheesecake-by-mona'
+		},
+		files: {
+			assets: 'static'
+		},
+		appDir: 'app',
 	}
 };
 

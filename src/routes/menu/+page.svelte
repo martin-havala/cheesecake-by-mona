@@ -8,18 +8,18 @@
 	let cakeList: CakeDTO[] = [];
 	let printList: CakeDTO[] = [];
 
-	const saveCakeOrder = (cake: CakeDTO, printOrder?: number) => {
+	const saveCake = (cake: CakeDTO, printOrder: number) => {
 		if (!ls) return;
 		ls.setItem(`${cake.name}${printOrder ? PRINT_SUFFIX : ''}`, JSON.stringify({ ...cake, printOrder }));
-	};
-
-	const printCake = (cake: CakeDTO) => {
-		saveCakeOrder(cake, printList.at(-1)?.printOrder ?? 0 + 1);
 		reloadList();
 	};
 
-	const removeCake = (cake: CakeDTO) => {
-		ls.removeItem(`${cake.name}${PRINT_SUFFIX}`);
+	const printCake = (cake: CakeDTO) => {
+		saveCake(cake, (printList.at(-1)?.printOrder ?? 0) + 1);
+	};
+
+	const removeCake = (cake: CakeDTO, print: boolean = false) => {
+		ls.removeItem(`${cake.name}${print ? PRINT_SUFFIX : ''}`);
 		reloadList();
 	};
 
@@ -52,10 +52,10 @@
 	};
 
 	function sortCakesByName(a: CakeDTO, b: CakeDTO) {
-		return (a.printOrder ?? 0) < (b.printOrder ?? 1) ? 1 : -1;
+		return (a.name ?? '') > (b.name ?? '') ? 1 : -1;
 	}
 	function sortCakesByPrintOrder(a: CakeDTO, b: CakeDTO) {
-		return (a.printOrder ?? 0) < (b.printOrder ?? 1) ? 1 : -1;
+		return (a.printOrder ?? 0) > (b.printOrder ?? 1) ? 1 : -1;
 	}
 
 	onMount(() => {
@@ -87,6 +87,7 @@
 						<div class="label">
 							{cake.name}
 						</div>
+						<button class="cakeRow__button flat" on:click={(e) => removeCake(cake, false)}> X </button>
 					</div>
 				</div>
 			{/each}
@@ -96,13 +97,22 @@
 			{#each printList as cake}
 				<div class="cakeRow">
 					<div class="cakeRow__item">
-						<button class="cakeRow__button superflat flat" on:click={(e) => removeCake(cake)}>
+						<button class="cakeRow__button superflat flat" on:click={(e) => removeCake(cake, true)}>
 							<div class="cake">
 								<Cake {cake} />
 							</div>
 						</button>
 						<div class="label">
-							<input class="cakeRow__input" value={cake.name} />
+							<form>
+								<input
+									class="cakeRow__input"
+									value={cake.name}
+									on:change={(e) => {
+										removeCake(cake, true);
+										saveCake({ ...cake, name: e.currentTarget.value }, cake.printOrder ?? 0);
+									}}
+								/>
+							</form>
 						</div>
 					</div>
 				</div>
@@ -126,7 +136,7 @@
 		display: flex;
 		justify-content: space-around;
 		align-items: center;
-		height: 2rem;
+		height: 5rem;
 		padding: 0.5rem;
 		margin: 0;
 		width: 100%;
@@ -154,7 +164,8 @@
 	}
 	.cakeRow__button,
 	.cake {
-		flex: 0 0 4rem;
-		height: 2.5rem;
+		background-color: white;
+		flex: 0 0 6rem;
+		height: 4rem;
 	}
 </style>
