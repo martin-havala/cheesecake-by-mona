@@ -16,9 +16,6 @@
 	onMount(() => {
 		regenerateItems();
 	});
-	afterUpdate(()=>{
-		console.log('up')
-	})
 </script>
 
 <svelte:head>
@@ -32,7 +29,7 @@
 		<p>This is a tiny utility to generate cake visuals for Mona ♥</p>
 	</div>
 
-	<select id="palletes" value={activePalette} on:change={(e) => regenerateItems(+e.currentTarget.value)}>
+	<select id="palletes" bind:value={activePalette} on:change={(e) => regenerateItems(+e.currentTarget.value)}>
 		{#each PALLETE_KEYS as key, index}
 			<option value={index} selected={index == activePalette}>{key}</option>
 		{/each}
