@@ -1,0 +1,44 @@
+body {
+	font-family: sans-serif;
+	--background-color: #ccc;
+	background-color: var(--background-color);
+	padding: 0;
+	margin: 0;
+}
+
+section {
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	padding-top: 3em;
+	align-items: center;
+	flex: 0.6;
+}
+
+fieldset{
+	font-size: 0.9em;
+}
+
+h1 {
+	width: 100%;
+	text-align: center;
+}
+
+button, input{
+	cursor: pointer;
+}
+
+svg {
+	fill-rule: evenodd;
+	clip-rule: evenodd;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	stroke-miterlimit: 1;
+	transition: fill 0.4s ease-in-out;
+}
+
+@media (min-width: 720px) {
+	h1 {
+		font-size: 2.4rem;
+	}
+}
