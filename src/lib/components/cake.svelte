@@ -19,7 +19,7 @@
 		bodyUrl = `#body-${id}`;
 		corpusUrl = `#corpus-${id}`;
 		icingUrl = `#icing-${id}`;
-		decorationUrl = `#decoration-${id}`;
+		decorationUrl= isNotEmpty(cake.decoration) ? `#decoration-${id}` : `#body-${id}`;
 		decorationStrokeUrl = isNotEmpty(cake.decorationStroke) ? `#decorationStroke-${id}` : `#corpus-${id}`;
 		fillingUrl = `#filling-${id}`;
 		fillingTopUrl = `#fillingTop-${id}`;

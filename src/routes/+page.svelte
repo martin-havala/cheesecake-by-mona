@@ -4,7 +4,7 @@
 	import { generateCake } from '$lib/helpers/cakeGenerator';
 	import type { CakeDTO } from '$lib/models/cake';
 	import { PALLETE_KEYS } from '$lib/models/palettes';
-	import { afterUpdate, onMount } from 'svelte';
+	import { onMount } from 'svelte';
 
 	let items: CakeDTO[] = [];
 	let activePalette = PALLETE_KEYS.findIndex((key) => key == 'Retro') ?? 0;
