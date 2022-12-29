@@ -3,7 +3,7 @@
 	export let decorationStrokeUrl = '';
 </script>
 
-<g id="coco-chips">
+<g class="coco-chips">
 	<path
 		d="M124.374,66.907C127.538,58.346 114.193,45.526 94.568,38.274C80.286,32.997 66.013,31.963 58.335,35.649L79.696,48.343C81.998,47.238 86.276,47.549 90.556,49.13C96.439,51.304 100.439,55.146 99.491,57.713L124.374,66.907Z"
 		style="fill:url({decorationUrl}) transparent;"

@@ -3,8 +3,8 @@
 	export let decorationStrokeUrl = '';
 </script>
 
-<g id="cones">
-	<g id="cone">
+<g class="cones">
+	<g class="cone">
 		<path
 			d="M105.366,35C112.628,46.302 121.626,42.175 121.626,52.425C121.626,54.516 119.303,58.575 116.98,58.575C116.476,49.795 106.441,43.127 105.366,35Z"
 			style="fill:none;stroke:url({decorationStrokeUrl}) transparent;stroke-width:3px;"
@@ -62,7 +62,7 @@
 			style="fill:url({decorationUrl}) transparent;"
 		/>
 	</g>
-	<g id="cone1">
+	<g class="cone1">
 		<path
 			d="M81.813,37C91.869,52.648 104.326,46.934 104.326,61.126C104.326,64.021 101.11,69.641 97.894,69.641C97.196,57.485 83.302,48.253 81.813,37Z"
 			style="fill:none;stroke:url({decorationStrokeUrl}) transparent;stroke-width:3px;"
@@ -120,7 +120,7 @@
 			style="fill:url({decorationUrl}) transparent;"
 		/>
 	</g>
-	<g id="cone2">
+	<g class="cone2">
 		<path
 			d="M62.743,56.566C70.898,69.256 81,64.622 81,76.131C81,78.478 78.392,83.036 75.784,83.036C75.218,73.178 63.951,65.692 62.743,56.566Z"
 			style="fill:none;stroke:url({decorationStrokeUrl}) transparent;stroke-width:3px;"

@@ -70,26 +70,26 @@
 		{/if}
 
 		{#if isNotEmpty(cake.fillingTop)}
-			<path id="filling-top" d="M44,137.004L44,104L285,104L285,137.004L44,137.004Z" style="fill:url({fillingTopUrl})" />
+			<path class="filling-top" d="M44,137.004L44,104L285,104L285,137.004L44,137.004Z" style="fill:url({fillingTopUrl})" />
 		{/if}
 
 		{#if isNotEmpty(cake.filling)}
 			{#if isNotEmpty(cake.fillingTop)}
 				<path
-					id="filling-bottom"
+					class="filling-bottom"
 					d="M285,142.004L285,175C258.947,175 73,175 73,175C67.309,175 62.044,175.107 57.463,174.482C54.015,174.011 51.006,173.181 48.779,171.059C45.415,167.854 44,162.255 44,152.952L44,142.004L285,142.004Z"
 					style="fill:url({fillingUrl})"
 				/>
 			{:else}
 				<path
-					id="filling-inner"
+					class="filling-inner"
 					d="M285,104.004L285,175C258.947,175 73,175 73,175C67.309,175 62.044,175.107 57.463,174.482C54.015,174.011 51.006,173.181 48.779,171.059C45.415,167.854 44,162.255 44,152.952L44,104.004L285,104.004Z"
 					style="fill:url({fillingUrl})"
 				/>
 			{/if}
 		{:else}
 			<path
-				id="filling"
+				class="filling"
 				d="M285,104.004L285,175C258.947,175 73,175 73,175C67.309,175 62.044,175.107 57.463,174.482C54.015,174.011 51.006,173.181 48.779,171.059C45.415,167.854 44,162.255 44,152.952L44,104.004L285,104.004Z"
 				style="fill:url({bodyUrl})"
 			/>
@@ -111,7 +111,7 @@
 	{/if}
 
 	{#if cake.midSection}
-		<rect id="mid-section" x="38" y="137" width="247" height="5" style="fill:url({corpusUrl})" />
+		<rect class="mid-section" x="38" y="137" width="247" height="5" style="fill:url({corpusUrl})" />
 	{/if}
 
 	<path
@@ -124,11 +124,11 @@
 		<path class="icing" style="fill:url({icingUrl})" d="M110.784,50.138C64.181,61.24 38,76.299 38,92L282,92L110.784,50.138Z" />
 	{/if}
 	<path
-		id="fillingTopStroke"
+		class="fillingTopStroke"
 		style="fill:url({corpusUrl})"
 		d="M112.209,44.309L283.425,86.172C286.374,86.893 288.32,89.703 287.957,92.718C287.594,95.732 285.036,98 282,98L38,98C34.686,98 32,95.314 32,92C32,84.179 36.681,76.138 46.654,68.837C59.106,59.723 80.413,51.205 109.393,44.301C110.319,44.08 111.284,44.083 112.209,44.309ZM110.784,50.138C64.181,61.24 38,76.299 38,92L282,92L110.784,50.138Z"
 	/>
-	<svelte:component this={decorationMapper(cake.decorationType)} {id} {decorationStrokeUrl} {decorationUrl} />
+	<svelte:component this={decorationMapper(cake.decorationType)} {decorationStrokeUrl} {decorationUrl} />
 	<defs>
 		<svelte:component this={patternMapper(cake.body?.pattern)} {id} area="body" />
 		<svelte:component this={patternMapper(cake.corpus?.pattern)} {id} area="corpus" />
@@ -136,7 +136,7 @@
 		<svelte:component this={patternMapper(cake.decoration?.pattern)} {id} area="decoration" />
 		<svelte:component this={patternMapper(cake.decorationStroke?.pattern)} {id} area="decorationStroke" />
 		<svelte:component this={patternMapper(cake.filling?.pattern)} {id} area="filling" />
-		<svelte:component this={patternMapper(cake.fillingTop?.pattern)} {id} area="fillingTop" top="true" />
+		<svelte:component this={patternMapper(cake.fillingTop?.pattern)} {id} area="fillingTop" />
 		<Basics {id} />
 	</defs>
 </svg>

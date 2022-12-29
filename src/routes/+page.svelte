@@ -3,19 +3,22 @@
 	import Cake from '$lib/components/cake.svelte';
 	import { generateCake } from '$lib/helpers/cakeGenerator';
 	import type { CakeDTO } from '$lib/models/cake';
-	import { INDEX_TO_PALLETE_MAP, PALLETE_KEYS } from '$lib/models/palettes';
-	import { onMount } from 'svelte';
+	import { PALLETE_KEYS } from '$lib/models/palettes';
+	import { afterUpdate, onMount } from 'svelte';
 
 	let items: CakeDTO[] = [];
 	let activePalette = PALLETE_KEYS.findIndex((key) => key == 'Retro') ?? 0;
 
 	const regenerateItems = (index?: number) => {
-		items = new Array(36).fill(0).map((a, i) => generateCake(true, index ?? activePalette));
+		items = new Array(25).fill(0).map((a, i) => generateCake(true, index ?? activePalette));
 	};
 
 	onMount(() => {
 		regenerateItems();
 	});
+	afterUpdate(()=>{
+		console.log('up')
+	})
 </script>
 
 <svelte:head>
@@ -49,8 +52,8 @@
 	div.bakery {
 		margin: 2em 0;
 		display: grid;
-		grid-template-columns: repeat(6, 1fr);
-		grid-template-rows: repeat(6, 9vh);
+		grid-template-columns: repeat(5, 1fr);
+		grid-template-rows: repeat(5, 9vh);
 		width: 100%;
 		height: 50vh;
 	}
