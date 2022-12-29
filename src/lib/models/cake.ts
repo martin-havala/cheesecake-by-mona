@@ -42,6 +42,9 @@ export interface CakeDTO {
 	name?: string;
 	printOrder?: number;
 	decorationType: Decorations;
+	midSection?: boolean;
+	style: Style;
+
 	corpus: ColorPattern;
 	body: ColorPattern;
 	icing: ColorPattern;
@@ -49,6 +52,4 @@ export interface CakeDTO {
 	decorationStroke: ColorPattern;
 	filling: ColorPattern;
 	fillingTop: ColorPattern;
-	midSection?: boolean;
-	style: Style;
 }

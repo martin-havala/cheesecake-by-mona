@@ -1,9 +1,21 @@
-<script>
+<script lang="ts">
 	import { base } from '$app/paths';
 	import Cake from '$lib/components/cake.svelte';
 	import { generateCake } from '$lib/helpers/cakeGenerator';
+	import type { CakeDTO } from '$lib/models/cake';
+	import { INDEX_TO_PALLETE_MAP, PALLETE_KEYS } from '$lib/models/palettes';
+	import { onMount } from 'svelte';
 
-	const items = new Array(36).fill(0).map((a, i) => generateCake(true, Math.floor(Math.random() * 100)));
+	let items: CakeDTO[] = [];
+	let activePalette = PALLETE_KEYS.findIndex((key) => key == 'Retro') ?? 0;
+
+	const regenerateItems = (index?: number) => {
+		items = new Array(36).fill(0).map((a, i) => generateCake(true, index ?? activePalette));
+	};
+
+	onMount(() => {
+		regenerateItems();
+	});
 </script>
 
 <svelte:head>
@@ -13,10 +25,16 @@
 
 <section>
 	<div class="text-column">
-		<h1>About this app</h1>
-
-		<p>This is a tiny utility to generate cakes for Mona &lt;3</p>
+		<h1>CheeseCake by Mona</h1>
+		<p>This is a tiny utility to generate cake visuals for Mona ♥</p>
 	</div>
+
+	<select id="palletes" value={activePalette} on:change={(e) => regenerateItems(+e.currentTarget.value)}>
+		{#each PALLETE_KEYS as key, index}
+			<option value={index} selected={index == activePalette}>{key}</option>
+		{/each}
+	</select>
+	<button on:click={(e) => regenerateItems(activePalette)}>Bake a new batch </button>
 
 	<div class="bakery">
 		{#each items as cake}

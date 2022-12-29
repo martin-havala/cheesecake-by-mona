@@ -1,8 +1,6 @@
-import { dev } from '$app/environment';
 
 // render cakes only once
-export const csr = false;
-
+export const csr = true;
 
 // since there's no dynamic data here, we can prerender
 // it so that it gets served as a static asset in production

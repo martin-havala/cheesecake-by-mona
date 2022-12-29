@@ -3,6 +3,7 @@
 	import ColorPatternForm from '$lib/components/color-pattern-form.svelte';
 	import { generateCake } from '$lib/helpers/cakeGenerator';
 	import { Decorations, Style, type CakeDTO } from '$lib/models/cake';
+	import { PALLETE_KEYS } from '$lib/models/palettes';
 
 	import { onMount } from 'svelte';
 
@@ -26,10 +27,10 @@
 		}
 	});
 
-	let recreateCake = () => {
-		cake = { ...generateCake(false), style: cake.style, midSection: cake.midSection };
+	let recreateCake = (paletteIndex?: number) => {
+		cake = { ...generateCake(false, paletteIndex), style: cake.style, midSection: cake.midSection };
 	};
-	
+
 	let recreateMonoCake = (light: string = '#ffffff', dark: string = '#000000') => {
 		const defaultCake = {
 			...generateCake(false),
@@ -53,6 +54,8 @@
 	let changeStyle = (e: Event) => {
 		cake.style = (e.target as HTMLInputElement).checked ? Style.Inset : Style.Colour;
 	};
+
+	let activePalette = PALLETE_KEYS.findIndex((k) => k == 'Retro');
 </script>
 
 <svelte:head>
@@ -70,9 +73,18 @@
 		<form>
 			<input bind:value={cake.name} placeholder="Enter cake name" />
 			<button on:click={saveCake} disabled={!cake.name}>Save Cake</button>
-			<button on:click={recreateCake}>Generate new cake</button>
-			<button on:click={(e) => recreateMonoCake()}>Black White</button>
-			<button on:click={(e) => recreateMonoCake('#ffd700')}>Generate noir</button>
+			<fieldset>
+				<legend>Generate</legend>
+				<select id="palletes" bind:value={activePalette} on:change={(e) => recreateCake(activePalette)}>
+					{#each PALLETE_KEYS as key, index}
+						<option value={index} selected={index == activePalette}>{key}</option>
+					{/each}
+				</select>
+				<button on:click={(e) => recreateCake(activePalette)}>ByPallete</button>
+				<button on:click={(e) => recreateCake()}>Random</button>
+				<button on:click={(e) => recreateMonoCake()}>Black/White</button>
+				<button on:click={(e) => recreateMonoCake('#ffd700')}>Gold</button>
+			</fieldset>
 			<fieldset>
 				<legend>Basics (won't change during randomization)</legend>
 				<div class="inset">

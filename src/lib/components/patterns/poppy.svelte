@@ -1,12 +1,12 @@
-<script>
-	export let id = 0;
-	export let top = false;
+<script lang="ts">
+	export let id = '';
+	export let area = 'background';
 </script>
 
-<pattern id="Poppy-{top ? 'top-' : ''}{id}" patternUnits="userSpaceOnUse" width="320" height="208">
-	<rect x="0" y="0" width="320" height="208" style="fill:var(--filling-{top ? 'top-' : ''}color-2,  transparent)" />
+<pattern id="{area}-{id}" patternUnits="userSpaceOnUse" width="320" height="208">
+	<rect x="0" y="0" width="320" height="208" style="fill:var(--{area}-color-2,  transparent)" />
 
-	<g style="fill:var(--filling-{top ? 'top-' : ''}color-1, --background-{top ? 'top-' : ''}color-1, black);">
+	<g style="fill:var(--{area}-color-1, --{area}-color-1, black);">
 		<circle cx="246.556" cy="124.328" r="1" />
 		<circle cx="276.556" cy="104.328" r="1" />
 		<circle cx="286.556" cy="154.328" r="1" />

@@ -13,7 +13,7 @@ import Wiggle from '$lib/components/patterns/wiggle.svelte';
 
 import { Patterns } from '$lib/models/cake';
 
-export function patternMapper(pattern: Patterns): any {
+export function patternMapper(pattern?: Patterns): any {
 	switch (pattern) {
 		case Patterns.DiagonalLines:
 			return DiagonalLines;
@@ -39,5 +39,7 @@ export function patternMapper(pattern: Patterns): any {
 			return Waves;
 		case Patterns.Wiggle:
 			return Wiggle;
+		default:
+			return Gradient;
 	}
 }
