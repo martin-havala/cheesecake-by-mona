@@ -25,7 +25,6 @@ export function generateCake(allowEmpty = true, paletteIndex?: number): CakeDTO 
 			? paletteIndex % PALLETE_KEYS.length
 			: Math.floor(Math.random() * PALLETE_KEYS.length) % PALLETE_KEYS.length;
 	const selectedPalette = PALLETES[PALLETE_KEYS[selectedPaletteIndex]];
-	console.log(selectedPaletteIndex, selectedPalette);
 
 	const newCake: CakeDTO = {
 		decorationType: Math.floor(Math.random() * 11),

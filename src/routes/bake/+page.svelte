@@ -28,7 +28,12 @@
 	});
 
 	let recreateCake = (paletteIndex?: number) => {
-		cake = { ...generateCake(false, paletteIndex), style: cake.style, midSection: cake.midSection };
+		const defaultCake = {
+			...generateCake(true, paletteIndex),
+			style: cake.style,
+			midSection: cake.midSection
+		};
+		cake = { ...defaultCake };
 	};
 
 	let recreateMonoCake = (light: string = '#ffffff', dark: string = '#000000') => {
@@ -67,15 +72,22 @@
 	<h1>Let's bake</h1>
 	{#if cake}
 		<div class="cake">
-			<Cake bind:cake />
+			<Cake {cake} />
 		</div>
 
 		<form>
 			<input bind:value={cake.name} placeholder="Enter cake name" />
 			<button on:click={saveCake} disabled={!cake.name}>Save Cake</button>
+			{activePalette}
 			<fieldset>
 				<legend>Generate</legend>
-				<select id="palletes" bind:value={activePalette} on:change={(e) => recreateCake(activePalette)}>
+				<select
+					id="palletes"
+					bind:value={activePalette}
+					on:change={(e) => {
+						recreateCake(activePalette);
+					}}
+				>
 					{#each PALLETE_KEYS as key, index}
 						<option value={index} selected={index == activePalette}>{key}</option>
 					{/each}

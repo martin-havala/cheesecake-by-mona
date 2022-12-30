@@ -38,6 +38,8 @@ export interface ColorPattern {
 	pattern?: Patterns;
 }
 
+export type CakeArea = 'corpus' | 'body' | 'icing' | 'decoration' | 'decorationStroke' | 'filling' | 'fillingTop';
+
 export interface CakeDTO {
 	name?: string;
 	printOrder?: number;

@@ -1,12 +1,20 @@
 <script lang="ts">
+	import type { CakeArea, CakeDTO } from '$lib/models/cake';
 	export let id = '';
-	export let area = 'background';
+	export let area: CakeArea = 'body';
+	export let cake: CakeDTO;
 </script>
 
 <pattern id="{area}-{id}" patternUnits="userSpaceOnUse" width="320" height="208">
-	<rect x="0" y="0" width="320" height="208" style="fill:var(--{area}-color-2,  transparent)" />
+	<rect
+		x="0"
+		y="0"
+		width="320"
+		height="208"
+		style="fill:{cake[area].secondaryColor ?? cake.body.secondaryColor ?? 'transparent'};"
+	/>>
 
-	<g style="fill:var(--{area}-color-1, --{area}-color-1, black);">
+	<g style="fill:{cake[area].color ?? cake.body.color ?? 'transparent'};">
 		<circle cx="246.556" cy="124.328" r="1" />
 		<circle cx="276.556" cy="104.328" r="1" />
 		<circle cx="286.556" cy="154.328" r="1" />

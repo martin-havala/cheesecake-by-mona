@@ -1,6 +1,8 @@
-<script>
+<script lang="ts">
+	import type { CakeArea, CakeDTO } from '$lib/models/cake';
 	export let id = '';
-	export let area = 'background';
+	export let area: CakeArea = 'body';
+	export let cake: CakeDTO;
 </script>
 
 <pattern id={`${area}-${id}`} patternUnits="userSpaceOnUse" width="320" height="208">
