@@ -78,7 +78,6 @@
 		<form>
 			<input bind:value={cake.name} placeholder="Enter cake name" />
 			<button on:click={saveCake} disabled={!cake.name}>Save Cake</button>
-			{activePalette}
 			<fieldset>
 				<legend>Generate</legend>
 				<select

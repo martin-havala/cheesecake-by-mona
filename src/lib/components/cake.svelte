@@ -2,6 +2,8 @@
 	import { decorationMapper } from '$lib/helpers/decorationMapper';
 	import { patternMapper } from '$lib/helpers/patternMapper';
 	import { Style, type CakeDTO, type ColorPattern } from '$lib/models/cake';
+	import { beforeUpdate } from 'svelte';
+
 	import Basics from './patterns/basics.svelte';
 
 	export let cake: CakeDTO;
@@ -26,6 +28,9 @@
 
 	// for SSR
 	prepareUrls();
+	beforeUpdate(() => {
+		prepareUrls();
+	});
 
 	function isNotEmpty(cp: ColorPattern) {
 		return cp.color || cp.pattern || cp.secondaryColor;
@@ -42,15 +47,16 @@
 	xml:space="preserve"
 >
 	<defs>
-		<svelte:component this={decorationMapper(cake.decorationType)} {decorationStrokeUrl} {decorationUrl} />
-		<svelte:component this={patternMapper(cake.corpus?.pattern)} {id} {cake} area="corpus" />
-		<svelte:component this={patternMapper(cake.decorationStroke?.pattern)} {id} {cake} area="decorationStroke" />
-		<svelte:component this={patternMapper(cake.body?.pattern)} {id} {cake} area="body" />
-		<svelte:component this={patternMapper(cake.icing?.pattern)} {id} {cake} area="icing" />
-		<svelte:component this={patternMapper(cake.decoration?.pattern)} {id} {cake} area="decoration" />
-		<svelte:component this={patternMapper(cake.filling?.pattern)} {id} {cake} area="filling" />
-		<svelte:component this={patternMapper(cake.fillingTop?.pattern)} {id} {cake} area="fillingTop" />
-		<Basics {id} {cake} />
+		{#key cake}
+			<svelte:component this={patternMapper(cake.corpus?.pattern)} {id} {cake} area="corpus" />
+			<svelte:component this={patternMapper(cake.decorationStroke?.pattern)} {id} {cake} area="decorationStroke" />
+			<svelte:component this={patternMapper(cake.body?.pattern)} {id} {cake} area="body" />
+			<svelte:component this={patternMapper(cake.icing?.pattern)} {id} {cake} area="icing" />
+			<svelte:component this={patternMapper(cake.decoration?.pattern)} {id} {cake} area="decoration" />
+			<svelte:component this={patternMapper(cake.filling?.pattern)} {id} {cake} area="filling" />
+			<svelte:component this={patternMapper(cake.fillingTop?.pattern)} {id} {cake} area="fillingTop" />
+			<Basics {id} {cake} />
+		{/key}
 	</defs>
 
 	{#if cake.style == Style.Inset}
@@ -119,4 +125,6 @@
 		style="fill:url({corpusUrl})"
 		d="M112.209,44.309L283.425,86.172C286.374,86.893 288.32,89.703 287.957,92.718C287.594,95.732 285.036,98 282,98L38,98C34.686,98 32,95.314 32,92C32,84.179 36.681,76.138 46.654,68.837C59.106,59.723 80.413,51.205 109.393,44.301C110.319,44.08 111.284,44.083 112.209,44.309ZM110.784,50.138C64.181,61.24 38,76.299 38,92L282,92L110.784,50.138Z"
 	/>
+
+	<svelte:component this={decorationMapper(cake.decorationType)} {decorationStrokeUrl} {decorationUrl} />
 </svg>
