@@ -12,9 +12,10 @@ const config = {
 			// default options are shown
 			pages: 'docs',
 			assets: 'docs',
-			precompress: false,
+			precompress: true,
 			fallback: 'index.html',
-			path: ''
+			path: '',
+			strict: true
 		}),
 		paths: {
 			base: dev ? '' : '/cheesecake-by-mona',
@@ -23,7 +24,7 @@ const config = {
 		files: {
 			assets: 'static'
 		},
-		appDir: 'app',
+		appDir: 'app'
 	}
 };
 

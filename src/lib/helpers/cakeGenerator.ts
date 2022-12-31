@@ -28,7 +28,7 @@ export function generateCake(allowEmpty = true, paletteIndex?: number): CakeDTO 
 
 	const newCake: CakeDTO = {
 		decorationType: Math.floor(Math.random() * 11),
-		corpus: { color: '#0000000', secondaryColor: '#0000000' },
+		corpus: { color: '#000000', secondaryColor: '#000000' },
 		style: randomStyle(),
 		body: { color: randomColor(selectedPalette), secondaryColor: randomColor(selectedPalette) },
 		decorationStroke: {},

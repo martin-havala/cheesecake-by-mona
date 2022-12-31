@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { CakeDTO } from '$lib/models/cake';
-	export let id = 0;
+	export let id: string | number = 0;
 	export let cake: CakeDTO;
 </script>
 

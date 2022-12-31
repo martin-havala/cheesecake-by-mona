@@ -15,6 +15,6 @@
 	/>
 	<path
 		d="M50 25L37.5 50 25 25 37.5 0zm-25 0L12.5 50 0 25 12.5 0z"
-		style="fill:none;stroke: {cake[area].color ?? cake.body.color ?? 'black'};"
+		style="fill:none;stroke: {cake[area].color ?? cake.body.color ?? '#000000'};"
 	/>
 </pattern>

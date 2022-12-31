@@ -16,7 +16,7 @@
 
 	<path
 		d="M40 45a5 5 0 110-10 5 5 0 010 10zM0 45a5 5 0 110-10 5 5 0 010 10zM0 5A5 5 0 110-5 5 5 0 010 5zm40 0a5 5 0 110-10 5 5 0 010 10z"
-		style="fill: {cake[area].color ?? cake.body.color ?? 'black'};"
+		style="fill: {cake[area].color ?? cake.body.color ?? '#000000'};"
 	/>
-	<path d="M20 25a5 5 0 110-10 5 5 0 010 10z" style="fill: {cake[area].color ?? cake.body.color ?? 'black'};" />
+	<path d="M20 25a5 5 0 110-10 5 5 0 010 10z" style="fill: {cake[area].color ?? cake.body.color ?? '#000000'};" />
 </pattern>

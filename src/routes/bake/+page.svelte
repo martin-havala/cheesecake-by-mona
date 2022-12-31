@@ -60,7 +60,7 @@
 		cake.style = (e.target as HTMLInputElement).checked ? Style.Inset : Style.Colour;
 	};
 
-	let activePalette = PALLETE_KEYS.findIndex((k) => k == 'Retro');
+	let activePaletteIndex = PALLETE_KEYS.findIndex((k) => k == 'Retro');
 </script>
 
 <svelte:head>
@@ -82,16 +82,16 @@
 				<legend>Generate</legend>
 				<select
 					id="palletes"
-					bind:value={activePalette}
+					bind:value={activePaletteIndex}
 					on:change={(e) => {
-						recreateCake(activePalette);
+						recreateCake(activePaletteIndex);
 					}}
 				>
 					{#each PALLETE_KEYS as key, index}
-						<option value={index} selected={index == activePalette}>{key}</option>
+						<option value={index} selected={index == activePaletteIndex}>{key}</option>
 					{/each}
 				</select>
-				<button on:click={(e) => recreateCake(activePalette)}>ByPallete</button>
+				<button on:click={(e) => recreateCake(activePaletteIndex)}>ByPallete</button>
 				<button on:click={(e) => recreateCake()}>Random</button>
 				<button on:click={(e) => recreateMonoCake()}>Black/White</button>
 				<button on:click={(e) => recreateMonoCake('#ffd700')}>Gold</button>
@@ -120,24 +120,17 @@
 		</form>
 
 		<div class="colorPatterns">
-			<ColorPatternForm legend="Body" bind:cpProperty={cake.body} />
-			<ColorPatternForm legend="Filling" bind:cpProperty={cake.filling} />
-			<ColorPatternForm legend="Filling Top" bind:cpProperty={cake.fillingTop} />
+			<ColorPatternForm bind:activePaletteIndex legend="Body" bind:cpProperty={cake.body} />
+			<ColorPatternForm bind:activePaletteIndex legend="Filling" bind:cpProperty={cake.filling} />
+			<ColorPatternForm bind:activePaletteIndex legend="Filling Top" bind:cpProperty={cake.fillingTop} />
+			<ColorPatternForm bind:activePaletteIndex legend="Stroke" bind:cpProperty={cake.corpus} />
 		</div>
+		<div class="colorPatterns">
+			<ColorPatternForm bind:activePaletteIndex legend="Icing" bind:cpProperty={cake.icing} />
 
-		<hr />
-		{#if fancy}
-			<button on:click={toggleFancy}>Hide Fancy Stuff</button>
-			<div class="colorPatterns">
-				<ColorPatternForm legend="Icing" bind:cpProperty={cake.icing} />
-				<ColorPatternForm legend="Stroke" bind:cpProperty={cake.corpus} />
-
-				<ColorPatternForm legend="Decoration" bind:cpProperty={cake.decoration} />
-				<ColorPatternForm legend="DecorationStroke" bind:cpProperty={cake.decorationStroke} />
-			</div>
-		{:else}
-			<button on:click={toggleFancy}>Show Fancy Stuff</button>
-		{/if}
+			<ColorPatternForm bind:activePaletteIndex legend="Decoration" bind:cpProperty={cake.decoration} />
+			<ColorPatternForm bind:activePaletteIndex legend="DecorationStroke" bind:cpProperty={cake.decorationStroke} />
+		</div>
 	{:else}
 		<section>Baking random cheesecake...</section>
 	{/if}

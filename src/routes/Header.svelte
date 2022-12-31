@@ -19,8 +19,11 @@
 			<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
 				<a href="{base}/bake" target="_self">Bake</a>
 			</li>
-			<li aria-current={$page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}>
+			<li aria-current={$page.url.pathname.startsWith('/bake') ? 'page' : undefined}>
 				<a href="{base}/menu">Menu</a>
+			</li>
+			<li aria-current={$page.url.pathname.startsWith('/byMona') ? 'page' : undefined}>
+				<a href="{base}/byMona">ByMona</a>
 			</li>
 		</ul>
 		<svg viewBox="0 0 2 3" aria-hidden="true">
@@ -97,6 +100,7 @@
 	li {
 		position: relative;
 		height: 100%;
+		padding: 0 1rem;
 	}
 
 	li[aria-current='page']::before {

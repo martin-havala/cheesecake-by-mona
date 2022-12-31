@@ -10,7 +10,7 @@
 	let activePalette = PALLETE_KEYS.findIndex((key) => key == 'Retro') ?? 0;
 
 	const regenerateItems = (index?: number) => {
-		items = new Array(25).fill(0).map((a, i) => generateCake(true, index ?? activePalette));
+		items = new Array(16).fill(0).map((a, i) => generateCake(true, index ?? activePalette));
 	};
 
 	onMount(() => {
@@ -49,16 +49,19 @@
 	div.bakery {
 		margin: 2em 0;
 		display: grid;
-		grid-template-columns: repeat(5, 1fr);
-		grid-template-rows: repeat(5, 9vh);
+		grid-template-columns: repeat(4, 1fr);
+		grid-template-rows: repeat(4, 10vh);
+		gap: 1rem;
 		width: 100%;
 		height: 50vh;
 	}
 
 	.bakery .cake {
 		display: block;
-		position: relative;
+		width: 100%;
+		height: 100%;
 	}
+
 	.bakery .cake:hover {
 		z-index: 100;
 		transform: scale(1.1);

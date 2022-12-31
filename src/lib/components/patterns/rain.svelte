@@ -16,6 +16,6 @@
 
 	<path
 		d="M4 .99C4 .445 4.444 0 5 0c.552 0 1 .45 1 .99v4.02C6 5.555 5.556 6 5 6c-.552 0-1-.45-1-.99V.99zm6 8c0-.546.444-.99 1-.99.552 0 1 .45 1 .99v4.02c0 .546-.444.99-1 .99-.552 0-1-.45-1-.99V8.99z		"
-		style="fill: {cake[area].color ?? cake.body.color ?? 'black'};"
+		style="fill: {cake[area].color ?? cake.body.color ?? '#000000'};"
 	/>
 </pattern>
