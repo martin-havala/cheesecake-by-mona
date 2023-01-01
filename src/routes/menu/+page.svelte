@@ -105,6 +105,7 @@
 		</div>
 		<div class="cakeList printList">
 			Selected for export:
+			<div class="tiny">	(you can edit label of cakes here)</div>
 			<button style="float:right" on:click={(e) => downloadSVG(document.getElementById('print'), 'byMona-menu.svg')}
 				>Download</button
 			>
