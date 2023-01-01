@@ -2,7 +2,7 @@
 	import Cake from '$lib/components/cake.svelte';
 	import Print from '$lib/components/print.svelte';
 	import { PRINT_SUFFIX } from '$lib/constants/constants';
-	import DefaultCakes from '$lib/constants/default-cakes.json';
+	import { DEFAULT_CAKES } from '$lib/constants/default-cakes';
 	import { getBakeUrl } from '$lib/helpers/bake-url';
 	import { downloadSVG } from '$lib/helpers/downloadSVG';
 	import type { CakeDTO } from '$lib/models/cake';
@@ -32,6 +32,10 @@
 		if (!ls) {
 			return;
 		}
+
+		if (ls.length == 0) {
+			DEFAULT_CAKES.forEach((cake) => saveCake(cake, 0));
+		}
 		const loadedCakes = new Array(ls.length).fill('').reduce(
 			(acc, _, index) => {
 				const key = ls.key(index) as string;
@@ -52,7 +56,7 @@
 			{ cakeList: [], printList: [] }
 		);
 
-		cakeList = loadedCakes.cakeList.length > 0 ? loadedCakes.cakeList.sort(sortCakesByName) : DefaultCakes;
+		cakeList = loadedCakes.cakeList.length > 0 ? loadedCakes.cakeList.sort(sortCakesByName) : DEFAULT_CAKES;
 		printList = loadedCakes.printList.sort(sortCakesByPrintOrder);
 	};
 
@@ -92,9 +96,7 @@
 						<div class="label">
 							{cake.name}
 						</div>
-						{#if !cake.default}
-							<button class="icobutton flat" on:click={(e) => removeCake(cake, false)}> X </button>
-						{/if}
+						<button class="" on:click={(e) => removeCake(cake, false)}> Delete </button>
 						<a class="icobutton flat" href={getBakeUrl(cake)}> <button>Edit</button></a>
 						<button on:click={(e) => printCake(cake)}> Add</button>
 					</div>
