@@ -1,12 +1,15 @@
 <script lang="ts">
 	import Cake from '$lib/components/cake.svelte';
-	import type { CakeDTO } from '$lib/models/cake';
-	import DefaultCakes from '$lib/constants/default-cakes.json';
-	import { onMount } from 'svelte';
-	import { getBakeUrl } from '$lib/helpers/bake-url';
+	import Print from '$lib/components/print.svelte';
 	import { PRINT_SUFFIX } from '$lib/constants/constants';
+	import DefaultCakes from '$lib/constants/default-cakes.json';
+	import { getBakeUrl } from '$lib/helpers/bake-url';
+	import { downloadSVG } from '$lib/helpers/downloadSVG';
+	import type { CakeDTO } from '$lib/models/cake';
+	import { onMount } from 'svelte';
 
 	let ls: Storage;
+
 	let cakeList: CakeDTO[] = [];
 	let printList: CakeDTO[] = [];
 
@@ -77,11 +80,11 @@
 	<h1>Menu generator</h1>
 	<div class="menu">
 		<div class="cakeList">
-			Stored
+			Stored in memory:
 			{#each cakeList as cake}
 				<div class="cakeRow">
 					<div class="cakeRow__item">
-						<button class="cakeRow__button flat" on:click={(e) => printCake(cake)}>
+						<button class="cakeRow__button flat">
 							<div class="cake">
 								<Cake {cake} />
 							</div>
@@ -92,13 +95,21 @@
 						{#if !cake.default}
 							<button class="icobutton flat" on:click={(e) => removeCake(cake, false)}> X </button>
 						{/if}
-						<a class="icobutton flat" href={getBakeUrl(cake)}> Edit </a>
+						<a class="icobutton flat" href={getBakeUrl(cake)}> <button>Edit</button></a>
+						<button on:click={(e) => printCake(cake)}> Add</button>
 					</div>
 				</div>
 			{/each}
 		</div>
 		<div class="cakeList printList">
-			To be printed
+			Selected for export:
+			<button style="float:right" on:click={(e) => downloadSVG(document.getElementById('print'), 'byMona-menu.svg')}
+				>Download</button
+			>
+			<div class="preview">
+				<Print {printList} />
+			</div>
+
 			{#each printList as cake}
 				<div class="cakeRow">
 					<div class="cakeRow__item">
@@ -126,8 +137,6 @@
 	</div>
 </section>
 
-
-
 <style>
 	.menu {
 		width: 100%;
@@ -143,8 +152,8 @@
 		display: flex;
 		justify-content: space-around;
 		align-items: center;
-		height: 5rem;
-		padding: 0.5rem;
+		height: 4rem;
+		padding: 0.1rem;
 		margin: 0;
 		width: 100%;
 	}
@@ -162,17 +171,14 @@
 		background: none;
 		font-size: 1rem;
 	}
-
-	.flat {
-		border: 0;
-	}
-	.superflat {
-		border: none;
-		background: none;
-	}
 	.cakeRow__button {
 		background-color: white;
 		flex: 0 0 6rem;
-		height: 4rem;
+	}
+
+	.preview {
+		width: 0;
+		height: 0;
+		overflow: hidden;
 	}
 </style>

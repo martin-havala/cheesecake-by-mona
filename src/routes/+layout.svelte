@@ -1,6 +1,7 @@
 <script>
 	import Header from './Header.svelte';
 	import './styles.css';
+	import '@fontsource/amatic-sc';
 </script>
 
 <div class="app">

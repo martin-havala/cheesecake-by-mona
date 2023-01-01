@@ -20,7 +20,12 @@
 
 		<div class="pattern">
 			<label for="{legend}-pattern">pattern</label>
-			<select id="{legend}-pattern" value={cpProperty.pattern} on:change={(e) => (cpProperty.pattern = +getInputValue(e))}>
+			<select
+				id="{legend}-pattern"
+				placeholder="Pattern"
+				value={cpProperty.pattern}
+				on:change={(e) => (cpProperty.pattern = +getInputValue(e))}
+			>
 				{#each Object.values(Patterns)
 					.filter((a) => isNaN(+a))
 					.map((a, i) => i) as index}

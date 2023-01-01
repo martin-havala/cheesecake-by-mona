@@ -6,12 +6,33 @@
 	export let value: string = '';
 	let show = false;
 	export let activePaletteIndex = 0;
+
+	function drag(e: DragEvent) {
+		e.dataTransfer?.setData('text', value);
+	}
+
+	function drop(e: DragEvent) {
+		console.log('drop', e.dataTransfer);
+		e.preventDefault();
+		e.stopPropagation();
+		const data = e.dataTransfer?.getData('text');
+		!!data && (value = data);
+	}
 </script>
 
-<button class="colorInput__btn" style={value ? `background:${value}` : ''} on:click={(e) => (show = !show)}>
+<button
+	class="colorInput__btn"
+	style={value ? `background:${value}` : ''}
+	draggable="true"
+	on:click={(e) => (show = !show)}
+	on:dragstart={drag}
+	on:drop={drop}
+	on:dragover={(ev) => {
+		ev.preventDefault();
+	}}
+>
 	<span class="colorInput__btn--label" style="color:{invertColorBW(value)}"><slot /></span>
 </button>
-
 {#if show}
 	<Palette
 		colors={PALLETES[PALLETE_KEYS[activePaletteIndex]]}

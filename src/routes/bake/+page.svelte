@@ -12,7 +12,7 @@
 	let ls: Storage | null = null;
 
 	const saveCake = () => {
-		!!ls && ls.setItem(`${cake.name}`, JSON.stringify(cake));
+		!!ls && ls.setItem(`${cake.name}`, JSON.stringify({ ...cake, default: false }));
 	};
 
 	onMount(() => {
@@ -145,5 +145,6 @@
 	}
 	.cake {
 		height: 20vh;
+		margin-bottom: 2rem;
 	}
 </style>

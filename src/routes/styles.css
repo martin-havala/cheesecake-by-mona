@@ -1,6 +1,6 @@
 body {
 	--border-radius: 3px;
-	font-family: sans-serif;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 	padding: 0;
 	margin: 0;
 	background-color: var(--background);
@@ -26,17 +26,33 @@ fieldset {
 	margin: 0.5rem;
 }
 
-h1 {
+h1,
+h2,
+h3 {
 	width: 100%;
 	text-align: center;
+	font-family: 'Amatic SC';
 }
 
 button,
 input {
 	cursor: pointer;
 	color: var(--color-text);
+	margin: 0.2rem;
+}
+button,
+select,
+input {
+	background: none;
+	border-radius: var(--border-radius);
+	border: 1px solid var(--color-frames);
+	padding: 0.2rem 0.5rem;
+	color: var(--color-text);
 }
 
+a {
+	color: var(--color-theme-1);
+}
 button.icobutton {
 	border-radius: 50%;
 }
@@ -50,6 +66,7 @@ svg {
 	transition: fill 0.4s ease-in-out;
 	image-rendering: -webkit-optimize-contrast;
 	transform: translateZ(0);
+	font-family: 'Amatic SC';
 }
 
 @media (min-width: 720px) {
@@ -60,13 +77,7 @@ svg {
 
 @media (prefers-color-scheme: dark) {
 	body {
-		--primary: #38423d;
-		--test: #f6f6ee;
-		--test: #8a9283;
-		--test: #d6664c;
-		--test: #997750;
-
-		--background: #38423d;
+		--background: #212121;
 		--color-text: #f6f6ee;
 		--color-frames: #8a9283;
 		--color-text-menu: #d6664c;
@@ -85,14 +96,5 @@ svg {
 	.night.light-scheme {
 		background: #eee;
 		color: black;
-	}
-}
-
-@media print {
-	header,
-	footer,
-	section:not(.print),
-	header {
-		display: none !important;
 	}
 }
