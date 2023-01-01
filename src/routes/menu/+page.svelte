@@ -85,30 +85,31 @@
 	<div class="menu">
 		<div class="cakeList">
 			Stored in memory:
+			<div class="tiny">(Click on imago to select it for printing)</div>
 			{#each cakeList as cake}
 				<div class="cakeRow">
 					<div class="cakeRow__item">
-						<button class="cakeRow__button flat">
+						<button class="cakeRow__button flat" on:click={(e) => printCake(cake)}>
 							<div class="cake">
 								<Cake {cake} />
 							</div>
 						</button>
 						<div class="label">
 							{cake.name}
+							<br />
+							<a class="icobutton flat" href={getBakeUrl(cake)}> <button> Edit </button></a>
+							<button class="" on:click={(e) => removeCake(cake, false)}> Delete </button>
 						</div>
-						<button class="" on:click={(e) => removeCake(cake, false)}> Delete </button>
-						<a class="icobutton flat" href={getBakeUrl(cake)}> <button>Edit</button></a>
-						<button on:click={(e) => printCake(cake)}> Add</button>
 					</div>
 				</div>
 			{/each}
 		</div>
 		<div class="cakeList printList">
-			Selected for export:
-			<div class="tiny">	(you can edit label of cakes here)</div>
 			<button style="float:right" on:click={(e) => downloadSVG(document.getElementById('print'), 'byMona-menu.svg')}
 				>Download</button
 			>
+			Selected for export:
+			<div class="tiny">(you can edit label of cakes here)</div>
 			<div class="preview">
 				<Print {printList} />
 			</div>
@@ -123,7 +124,8 @@
 						</button>
 						<div class="label">
 							<form>
-								<input
+								<textarea
+									cols="13"
 									class="cakeRow__input"
 									value={cake.name}
 									on:change={(e) => {
@@ -153,9 +155,10 @@
 
 	.cakeRow__item {
 		display: flex;
-		justify-content: space-around;
+		flex-wrap: wrap;
+		justify-content: flex-start;
 		align-items: center;
-		height: 4rem;
+		min-height: 4rem;
 		padding: 0.1rem;
 		margin: 0;
 		width: 100%;
@@ -163,17 +166,21 @@
 
 	.label {
 		text-align: left;
-		padding-top: 1rem;
 		padding-left: 1rem;
 		flex: 1 1 auto;
 	}
 
 	.cakeRow__input {
-		width: 100%;
 		border: none;
 		background: none;
 		font-size: 1rem;
 	}
+	textarea {
+		font-family: inherit;
+		color: var(--color-text);
+		width: 100%;
+	}
+
 	.cakeRow__button {
 		background-color: white;
 		flex: 0 0 6rem;

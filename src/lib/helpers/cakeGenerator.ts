@@ -1,8 +1,13 @@
 import { Patterns, Style, type CakeDTO } from '$lib/models/cake';
 import { PALLETES, PALLETE_KEYS } from '$lib/models/palettes';
 
-export function randomColor(palette: string[]) {
-	return palette[Math.floor(Math.random() * palette.length)];
+export function randomColors(palette: string[], allowEmpty = false) {
+	const indices = new Array(palette.length).fill(0).map((a, i) => i);
+	return {
+		color: palette[indices.splice(Math.floor(Math.random() * palette.length), 1)[0]],
+		secondaryColor:
+			!allowEmpty || Math.random() > 0.5 ? palette[indices.splice(Math.floor(Math.random() * palette.length), 1)[0]] : undefined
+	};
 }
 
 export function randomStyle() {
@@ -30,7 +35,7 @@ export function generateCake(allowEmpty = true, paletteIndex?: number): CakeDTO 
 		decorationType: Math.floor(Math.random() * 11),
 		corpus: { color: '#000000', secondaryColor: '#000000' },
 		style: randomStyle(),
-		body: { color: randomColor(selectedPalette), secondaryColor: randomColor(selectedPalette) },
+		body: randomColors(selectedPalette, false),
 		decorationStroke: {},
 		decoration: {},
 		icing: {},
@@ -39,7 +44,7 @@ export function generateCake(allowEmpty = true, paletteIndex?: number): CakeDTO 
 	};
 
 	if (selectedPaletteIndex === PALLETE_KEYS.findIndex((p) => p == 'Neon')) {
-		newCake.corpus = { color: randomColor(selectedPalette), secondaryColor: randomColor(selectedPalette) };
+		newCake.corpus = randomColors(selectedPalette);
 	}
 
 	const r = Math.random();
@@ -48,20 +53,18 @@ export function generateCake(allowEmpty = true, paletteIndex?: number): CakeDTO 
 			break;
 		case r < 0.66:
 			newCake.filling = {
-				color: randomColor(selectedPalette),
-				secondaryColor: randomColor(selectedPalette),
+				...randomColors(selectedPalette),
 				pattern: randomPattern(allowEmpty)
 			};
 			break;
 		case r > 0.66:
 			newCake.filling = {
-				color: randomColor(selectedPalette),
-				secondaryColor: randomColor(selectedPalette),
+				...randomColors(selectedPalette),
+
 				pattern: randomPattern(allowEmpty)
 			};
 			newCake.fillingTop = {
-				color: randomColor(selectedPalette),
-				secondaryColor: randomColor(selectedPalette),
+				...randomColors(selectedPalette),
 				pattern: randomPattern(allowEmpty)
 			};
 	}

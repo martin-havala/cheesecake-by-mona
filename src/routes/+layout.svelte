@@ -6,13 +6,12 @@
 
 <div class="app">
 	<Header />
-
 	<main>
 		<slot />
 	</main>
 
 	<footer>
-		<p>Cheesecake by Mona</p>
+		<p>Cheesecake by Mona <sup>&reg;</sup></p>
 	</footer>
 </div>
 
@@ -25,9 +24,7 @@
 
 	main {
 		flex: 1;
-		display: flex;
 		flex-direction: column;
-		padding: 1rem;
 		width: 100%;
 		max-width: 64rem;
 		margin: 0 auto;

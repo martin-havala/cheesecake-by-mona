@@ -11,13 +11,13 @@
 			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
 				<a href="{base}/">Home</a>
 			</li>
-			<li aria-current={$page.url.pathname === '/bake' ? 'page' : undefined}>
+			<li aria-current={$page.url.pathname.includes('/bake') ? 'page' : undefined}>
 				<a href="{base}/bake">Bake</a>
 			</li>
-			<li aria-current={$page.url.pathname.startsWith('/menu') ? 'page' : undefined}>
+			<li aria-current={$page.url.pathname.includes('/menu') ? 'page' : undefined}>
 				<a href="{base}/menu">Menu</a>
 			</li>
-			<li aria-current={$page.url.pathname.startsWith('/byMona') ? 'page' : undefined}>
+			<li aria-current={$page.url.pathname.includes('/byMona') ? 'page' : undefined}>
 				<a href="{base}/byMona">ByMona</a>
 			</li>
 		</ul>
@@ -32,11 +32,10 @@
 
 <style>
 	header {
-		position: fixed;
+		position: sticky;
 		top: 0;
-		left: 0;
-		right: 0;
-		display: flex;
+		width: 100%;
+		display: inline-flex;
 		justify-content: space-between;
 		background: var(--background);
 	}
