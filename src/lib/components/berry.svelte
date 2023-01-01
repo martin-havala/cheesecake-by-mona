@@ -3,7 +3,7 @@
 	export let decorationStrokeUrl = '';
 </script>
 
-<g id="berry">
+<g class="berry">
 	<g>
 		<circle cx="89.787" cy="71.794" r="8.279" style="fill:url({decorationUrl}) transparent;" />
 		<path

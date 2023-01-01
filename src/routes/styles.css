@@ -1,9 +1,13 @@
 body {
+	--border-radius: 3px;
 	font-family: sans-serif;
-	--background-color: #ccc;
-	background-color: var(--background-color);
 	padding: 0;
 	margin: 0;
+	background-color: var(--background);
+	background: url("data:image/svg+xml,%3Csvg version='1.1' class='h-4 text-dark' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1 '%3E%3Cpath d='M0,0 h.1v.1h-.1z M.5,.5 h.1v.1h-.1z' style='fill:8a9283;fill-opacity:.2' /%3E%3C/svg%3E")
+		var(--background);
+	background-size: 10px 10px;
+	color: var(--color-text);
 }
 
 section {
@@ -15,8 +19,11 @@ section {
 	flex: 0.6;
 }
 
-fieldset{
+fieldset {
 	font-size: 0.9em;
+	border: 1px solid var(--color-frames);
+	border-radius: var(--border-radius);
+	margin: 0.5rem;
 }
 
 h1 {
@@ -24,7 +31,8 @@ h1 {
 	text-align: center;
 }
 
-button, input{
+button,
+input {
 	cursor: pointer;
 }
 
@@ -40,5 +48,35 @@ svg {
 @media (min-width: 720px) {
 	h1 {
 		font-size: 2.4rem;
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	body {
+		--primary: #38423d;
+		--test: #f6f6ee;
+		--test: #8a9283;
+		--test: #d6664c;
+		--test: #997750;
+
+		--background: #38423d;
+		--color-text: #f6f6ee;
+		--color-frames: #8a9283;
+		--color-text-menu: #d6664c;
+		--color-theme-1: #d6664c;
+	}
+}
+
+@media (prefers-color-scheme: light) {
+	body {
+		--background: #f6f6ee;
+		--color-text: #38423d;
+		--color-frames: #8a9283;
+		--color-text-menu: #d6664c;
+		--color-theme-1: #d6664c;
+	}
+	.night.light-scheme {
+		background: #eee;
+		color: black;
 	}
 }

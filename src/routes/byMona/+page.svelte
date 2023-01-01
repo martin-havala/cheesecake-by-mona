@@ -19,8 +19,8 @@
 </script>
 
 <svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
+	<title>ByMona</title>
+	<meta name="description" content="ByMona logo editor" />
 </svelte:head>
 
 <section>

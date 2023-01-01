@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { invertColorBW } from '$lib/helpers/invert-color';
 	import { PALLETES, PALLETE_KEYS } from '$lib/models/palettes';
-	import Palette from '@untemps/svelte-palette/src/components/Palette.svelte';
+	import Palette from '@palette/Palette.svelte';
 
 	export let value: string = '';
 	let show = false;
@@ -24,7 +24,7 @@
 		showTransparentSlot={true}
 	>
 		<div slot="header">
-			<select id="palletes" bind:value={activePaletteIndex}>
+			<select bind:value={activePaletteIndex}>
 				{#each PALLETE_KEYS as key, index}
 					<option value={index} selected={index == activePaletteIndex}>{key}</option>
 				{/each}
@@ -34,6 +34,7 @@
 		<div slot="footer" class="palette__footer">
 			<input
 				type="color"
+				bind:value
 				on:change={(e) => {
 					show = false;
 					value = e.currentTarget.value;
@@ -47,7 +48,7 @@
 	.colorInput__btn {
 		display: inline-block;
 		border-radius: 0.2rem;
-		padding: 0.2rem .5rem;
+		padding: 0.2rem 0.5rem;
 		border: 1px solid black;
 		background: url("data:image/svg+xml,%3Csvg version='1.1' class='h-4 text-dark' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1 '%3E%3Cpath d='M0,0h.5v.5h-.5z M.5,0.5h.5v.5h-.5z' fill='000000' fill-opacity='.3' /%3E%3C/svg%3E");
 	}

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { decorationMapper } from '$lib/helpers/decorationMapper';
-	import { patternMapper } from '$lib/helpers/patternMapper';
+	import { decorationMapper } from '$lib/mappers/decoration.mapper';
+	import { patternMapper } from '$lib/mappers/pattern.mapper';
 	import { Style, type CakeDTO, type ColorPattern } from '$lib/models/cake';
 	import { beforeUpdate } from 'svelte';
 
@@ -104,9 +104,14 @@
 {/if}
 
 <path
-	class="corpus"
+	id="corpus"
 	style="fill:url({corpusUrl});"
-	d="M288,92L285,92L285,181L73,181C53,181 38,182 38,151L38,92L32,92C32,92 32,166 32,182.223C32,186.878 36.608,192 40.643,192L288,192L288,92Z"
+	d="M288,92L285,92L285,181L73,181C53,181 38,182 38,151L38,92L32,92C32,92 32,166 32,182.223C32,186.878 36.608,192 40.643,192C64.878,192 258.505,192 285,192C287,192 288,191 288,189C288,188 288,92 288,92Z"
+/>
+
+<path
+	class="plate"
+	d="M3,190C2.172,190 1.5,189.328 1.5,188.5C1.5,187.672 2.172,187 3,187L16,187C20.557,187 22.935,189.985 25.213,193.118C26.935,195.486 28.555,198 32,198L288,198C291.445,198 293.065,195.486 294.787,193.118C297.065,189.985 299.443,187 304,187L317,187C317.828,187 318.5,187.672 318.5,188.5C318.5,189.328 317.828,190 317,190L304,190C300.555,190 298.935,192.514 297.213,194.882C294.935,198.015 292.557,201 288,201L32,201C27.443,201 25.065,198.015 22.787,194.882C21.065,192.514 19.445,190 16,190L3,190Z"
 />
 
 {#if isNotEmpty(cake.icing)}

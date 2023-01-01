@@ -41,6 +41,7 @@ export interface ColorPattern {
 export type CakeArea = 'corpus' | 'body' | 'icing' | 'decoration' | 'decorationStroke' | 'filling' | 'fillingTop';
 
 export interface CakeDTO {
+	default?: boolean;
 	name?: string;
 	printOrder?: number;
 	decorationType: Decorations;

@@ -8,6 +8,7 @@ const config = {
 	// for more information about preprocessors
 	preprocess: preprocess(),
 	kit: {
+		alias: { '@palette/*': './node_modules/@untemps/svelte-palette/src/components/*' },
 		adapter: adapter({
 			// default options are shown
 			pages: 'docs',

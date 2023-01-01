@@ -8,8 +8,6 @@
 	import { onMount } from 'svelte';
 
 	let cake!: CakeDTO;
-	let fancy = false;
-	let toggleFancy = () => (fancy = !fancy);
 
 	let ls: Storage | null = null;
 
@@ -31,7 +29,8 @@
 		const defaultCake = {
 			...generateCake(true, paletteIndex),
 			style: cake.style,
-			midSection: cake.midSection
+			midSection: cake.midSection,
+			decorationType: cake.decorationType
 		};
 		cake = { ...defaultCake };
 	};
@@ -64,8 +63,8 @@
 </script>
 
 <svelte:head>
-	<title>Bake</title>
-	<meta name="description" content="About this app" />
+	<title>Bake a cake</title>
+	<meta name="description" content="Generator & editor for cakes" />
 </svelte:head>
 
 <section>
@@ -81,7 +80,6 @@
 			<fieldset>
 				<legend>Generate</legend>
 				<select
-					id="palletes"
 					bind:value={activePaletteIndex}
 					on:change={(e) => {
 						recreateCake(activePaletteIndex);

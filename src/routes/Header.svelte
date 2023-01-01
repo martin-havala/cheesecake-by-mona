@@ -1,34 +1,26 @@
 <script>
 	import { page } from '$app/stores';
-	import github from '$lib/images/github.svg';
+	import github from '$lib/images/github-mark.svg';
 
 	import { base } from '$app/paths';
 </script>
 
 <header>
-	<div class="corner">Mona</div>
-
 	<nav>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
-		</svg>
 		<ul>
 			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
 				<a href="{base}/">Home</a>
 			</li>
-			<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
-				<a href="{base}/bake" target="_self">Bake</a>
+			<li aria-current={$page.url.pathname === '/bake' ? 'page' : undefined}>
+				<a href="{base}/bake">Bake</a>
 			</li>
-			<li aria-current={$page.url.pathname.startsWith('/bake') ? 'page' : undefined}>
+			<li aria-current={$page.url.pathname.startsWith('/menu') ? 'page' : undefined}>
 				<a href="{base}/menu">Menu</a>
 			</li>
 			<li aria-current={$page.url.pathname.startsWith('/byMona') ? 'page' : undefined}>
 				<a href="{base}/byMona">ByMona</a>
 			</li>
 		</ul>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
-		</svg>
 	</nav>
 
 	<div class="corner">
@@ -46,41 +38,28 @@
 		right: 0;
 		display: flex;
 		justify-content: space-between;
+		background: var(--background);
 	}
 
 	.corner {
+		position: absolute;
 		width: 3em;
 		height: 3em;
-	}
-
-	.corner a {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		height: 100%;
+		right: 0;
+		top: 0;
 	}
 
 	.corner img {
 		width: 2em;
 		height: 2em;
+		padding: 0.5em;
 		object-fit: contain;
 	}
 
 	nav {
+		width: 100%;
 		display: flex;
 		justify-content: center;
-		--background: #eee;
-	}
-
-	svg {
-		width: 2em;
-		height: 3em;
-		display: block;
-	}
-
-	path {
-		fill: var(--background);
 	}
 
 	ul {
@@ -88,13 +67,10 @@
 		padding: 0;
 		margin: 0;
 		height: 3em;
-		min-width: 50vw;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		list-style: none;
-		background: var(--background);
-		background-size: contain;
 	}
 
 	li {
@@ -120,7 +96,7 @@
 		height: 100%;
 		align-items: center;
 		padding: 0 0.5rem;
-		color: var(--color-text);
+		color: var(--color-text-menu);
 		font-weight: 700;
 		font-size: 0.8rem;
 		text-transform: uppercase;

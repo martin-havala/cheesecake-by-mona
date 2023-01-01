@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { base } from '$app/paths';
 	import Cake from '$lib/components/cake.svelte';
+	import { getBakeUrl } from '$lib/helpers/bake-url';
 	import { generateCake } from '$lib/helpers/cakeGenerator';
 	import type { CakeDTO } from '$lib/models/cake';
 	import { PALLETE_KEYS } from '$lib/models/palettes';
@@ -38,7 +38,7 @@
 
 	<div class="bakery">
 		{#each items as cake}
-			<a href="{base}/bake?data={encodeURIComponent(JSON.stringify(cake))}" class="cake">
+			<a href={getBakeUrl(cake)} class="cake">
 				<Cake {cake} />
 			</a>
 		{/each}

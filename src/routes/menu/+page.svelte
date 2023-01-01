@@ -1,7 +1,9 @@
 <script lang="ts">
 	import Cake from '$lib/components/cake.svelte';
 	import type { CakeDTO } from '$lib/models/cake';
+	import DefaultCakes from '$lib/constants/default-cakes.json';
 	import { onMount } from 'svelte';
+	import { getBakeUrl } from '$lib/helpers/bake-url';
 
 	const PRINT_SUFFIX = '$P$';
 	let ls: Storage;
@@ -32,7 +34,6 @@
 				const key = ls.key(index) as string;
 				const cake = JSON.parse(ls.getItem(key) ?? '') as CakeDTO;
 
-				console.log(key, cake, acc);
 				if (key.includes(PRINT_SUFFIX)) {
 					return {
 						cakeList: acc.cakeList,
@@ -47,7 +48,8 @@
 			},
 			{ cakeList: [], printList: [] }
 		);
-		cakeList = loadedCakes.cakeList.sort(sortCakesByName);
+
+		cakeList = loadedCakes.cakeList.length > 0 ? loadedCakes.cakeList.sort(sortCakesByName) : DefaultCakes;
 		printList = loadedCakes.printList.sort(sortCakesByPrintOrder);
 	};
 
@@ -87,7 +89,10 @@
 						<div class="label">
 							{cake.name}
 						</div>
-						<button class="cakeRow__button flat" on:click={(e) => removeCake(cake, false)}> X </button>
+						{#if !cake.default}
+							<button class="cakeRow__button flat" on:click={(e) => removeCake(cake, false)}> X </button>
+						{/if}
+						<button class="cakeRow__button flat" on:click={(e) => getBakeUrl(cake)}> X </button>
 					</div>
 				</div>
 			{/each}
