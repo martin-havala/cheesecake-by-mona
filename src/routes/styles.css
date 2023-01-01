@@ -34,6 +34,11 @@ h1 {
 button,
 input {
 	cursor: pointer;
+	color: var(--color-text);
+}
+
+button.icobutton {
+	border-radius: 50%;
 }
 
 svg {
@@ -43,6 +48,8 @@ svg {
 	stroke-linejoin: round;
 	stroke-miterlimit: 1;
 	transition: fill 0.4s ease-in-out;
+	image-rendering: -webkit-optimize-contrast;
+	transform: translateZ(0);
 }
 
 @media (min-width: 720px) {
@@ -78,5 +85,14 @@ svg {
 	.night.light-scheme {
 		background: #eee;
 		color: black;
+	}
+}
+
+@media print {
+	header,
+	footer,
+	section:not(.print),
+	header {
+		display: none !important;
 	}
 }

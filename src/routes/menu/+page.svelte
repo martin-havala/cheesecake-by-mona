@@ -4,8 +4,8 @@
 	import DefaultCakes from '$lib/constants/default-cakes.json';
 	import { onMount } from 'svelte';
 	import { getBakeUrl } from '$lib/helpers/bake-url';
+	import { PRINT_SUFFIX } from '$lib/constants/constants';
 
-	const PRINT_SUFFIX = '$P$';
 	let ls: Storage;
 	let cakeList: CakeDTO[] = [];
 	let printList: CakeDTO[] = [];
@@ -90,9 +90,9 @@
 							{cake.name}
 						</div>
 						{#if !cake.default}
-							<button class="cakeRow__button flat" on:click={(e) => removeCake(cake, false)}> X </button>
+							<button class="icobutton flat" on:click={(e) => removeCake(cake, false)}> X </button>
 						{/if}
-						<button class="cakeRow__button flat" on:click={(e) => getBakeUrl(cake)}> X </button>
+						<a class="icobutton flat" href={getBakeUrl(cake)}> Edit </a>
 					</div>
 				</div>
 			{/each}
@@ -126,6 +126,8 @@
 	</div>
 </section>
 
+
+
 <style>
 	.menu {
 		width: 100%;
@@ -153,6 +155,7 @@
 		padding-left: 1rem;
 		flex: 1 1 auto;
 	}
+
 	.cakeRow__input {
 		width: 100%;
 		border: none;
@@ -167,8 +170,7 @@
 		border: none;
 		background: none;
 	}
-	.cakeRow__button,
-	.cake {
+	.cakeRow__button {
 		background-color: white;
 		flex: 0 0 6rem;
 		height: 4rem;
