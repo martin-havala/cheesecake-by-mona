@@ -1,13 +1,16 @@
 <script lang="ts">
+	import ByMona from '$lib/components/byMona.svelte';
 	import Cake from '$lib/components/cake.svelte';
 	import ColorPatternForm from '$lib/components/color-pattern-form.svelte';
 	import { generateCake } from '$lib/helpers/cakeGenerator';
+	import { downloadSVG } from '$lib/helpers/downloadSVG';
 	import { Decorations, Style, type CakeDTO } from '$lib/models/cake';
 	import { PALLETE_KEYS } from '$lib/models/palettes';
 
 	import { onMount } from 'svelte';
 
 	let cake!: CakeDTO;
+	let showAsLogo = false;
 
 	let ls: Storage | null = null;
 
@@ -94,6 +97,10 @@
 				<fieldset>
 					<legend>Basics (won't change during randomization)</legend>
 					<div class="inset">
+						<label for="style">Render in logo</label>
+						<input id="style" type="checkbox" bind:checked={showAsLogo} />
+					</div>
+					<div class="inset">
 						<label for="style">Render as inset</label>
 						<input id="style" type="checkbox" checked={cake.style == Style.Inset} on:change={changeStyle} />
 					</div>
@@ -114,7 +121,17 @@
 				</fieldset>
 			</form>
 			<div class="cake">
-				<Cake {cake} />
+				{#if showAsLogo}
+					<ByMona id="previewLogo">
+						<Cake {cake} wrap={false} />
+					</ByMona>
+					<br />
+					<button on:click={(e) => downloadSVG(document.getElementById('previewLogo'), 'byMona.svg')}>Download</button>
+				{:else}
+					<Cake {cake} id="preview" />
+					<br />
+					<button on:click={(e) => downloadSVG(document.getElementById('preview'), 'byMona-cake.svg')}>Download</button>
+				{/if}
 			</div>
 		</div>
 
@@ -153,8 +170,22 @@
 		flex: 1 0 200px;
 	}
 	.cake {
-		height: 20vh;
-		margin-bottom: 2rem;
+		height: 80%;
 		flex: 1 1 50%;
+		text-align: center;
+		margin: auto;
+	}
+	.cake :global(svg) {
+		width: 100%;
+		height: 100%;
+		
+		max-width: 36vh;
+		max-height: 36vh;
+		margin-top: -4vh;
+	}
+
+	:global(#previewLogo) {
+		background: white;
+		border-radius: 50%;
 	}
 </style>

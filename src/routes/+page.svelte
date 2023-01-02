@@ -53,7 +53,6 @@
 		grid-template-rows: repeat(4, 10vh);
 		gap: 1rem;
 		width: 100%;
-		height: 50vh;
 	}
 
 	.bakery .cake {

@@ -144,13 +144,14 @@
 
 <style>
 	.menu {
-		width: 100%;
+		width: 98vw;
+		max-width: 100%;
 		display: flex;
 		justify-content: space-between;
 		font-size: 1rem;
 	}
 	.cakeList {
-		width: 48%;
+		width: 45%;
 	}
 
 	.cakeRow__item {

@@ -15,7 +15,6 @@ section {
 	display: flex;
 	flex-direction: column;
 	justify-content: start;
-	padding-top: 2rem;
 	align-items: center;
 	flex: 0.6;
 }

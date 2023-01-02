@@ -3,22 +3,32 @@
 	import github from '$lib/images/github-mark.svg';
 
 	import { base } from '$app/paths';
+
+	let checked = false;
+	function toggleMenu() {
+		checked = !checked;
+	}
 </script>
 
 <header>
-	<nav>
+	<nav class="hamburger-menu">
+		<input id="menu__toggle" type="checkbox" hidden bind:checked />
+		<label class="menu__btn" for="menu__toggle">
+			<span />
+		</label>
+
 		<ul>
 			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
-				<a href="{base}/">Home</a>
+				<a href="{base}/" on:click={toggleMenu}>Home</a>
 			</li>
 			<li aria-current={$page.url.pathname.includes('/bake') ? 'page' : undefined}>
-				<a href="{base}/bake">Bake</a>
+				<a href="{base}/bake" on:click={toggleMenu}>Bake</a>
 			</li>
 			<li aria-current={$page.url.pathname.includes('/menu') ? 'page' : undefined}>
-				<a href="{base}/menu">Menu</a>
+				<a href="{base}/menu" on:click={toggleMenu}>Menu</a>
 			</li>
 			<li aria-current={$page.url.pathname.includes('/byMona') ? 'page' : undefined}>
-				<a href="{base}/byMona">ByMona</a>
+				<a href="{base}/byMona" on:click={toggleMenu}>ByMona</a>
 			</li>
 		</ul>
 	</nav>
@@ -38,14 +48,16 @@
 		display: inline-flex;
 		justify-content: space-between;
 		background: var(--background);
+		z-index: 1;
 	}
 
 	.corner {
-		position: absolute;
+		position: fixed;
 		width: 3em;
 		height: 3em;
 		right: 0;
 		top: 0;
+		z-index: 0;
 	}
 
 	.corner img {
@@ -74,20 +86,14 @@
 
 	li {
 		position: relative;
-		height: 100%;
+
 		padding: 0 1rem;
 	}
 
-	li[aria-current='page']::before {
+	li[aria-current='page'] a {
 		--size: 6px;
-		content: '';
-		width: 0;
-		height: 0;
-		position: absolute;
-		top: 0;
-		left: calc(50% - var(--size));
-		border: var(--size) solid transparent;
-		border-top: var(--size) solid var(--color-theme-1);
+		border-left: 1px solid var(--color-theme-1);
+		border-right: 1px solid var(--color-theme-1);
 	}
 
 	nav a {
@@ -106,5 +112,74 @@
 
 	a:hover {
 		color: var(--color-theme-1);
+	}
+	#menu__toggle {
+		display: none;
+	}
+
+	@media (max-width: 500px) {
+		#menu__toggle:checked + .menu__btn > span {
+			transform: rotate(45deg);
+		}
+		#menu__toggle:checked + .menu__btn > span::before {
+			top: 0;
+			transform: rotate(0deg);
+		}
+		#menu__toggle:checked + .menu__btn > span::after {
+			top: 0;
+			transform: rotate(90deg);
+		}
+		#menu__toggle:checked ~ ul {
+			top: 0 !important;
+		}
+		.menu__btn {
+			z-index: 2;
+			position: fixed;
+			top: 20px;
+			left: 20px;
+			width: 26px;
+			height: 26px;
+			cursor: pointer;
+		}
+		.menu__btn > span,
+		.menu__btn > span::before,
+		.menu__btn > span::after {
+			display: block;
+			position: absolute;
+			width: 100%;
+			height: 2px;
+			background-color: #616161;
+			transition-duration: 0.25s;
+		}
+		.menu__btn > span::before {
+			content: '';
+			top: -8px;
+		}
+		.menu__btn > span::after {
+			content: '';
+			top: 8px;
+		}
+
+		ul {
+			display: flex;
+			position: fixed;
+			top: -100vh;
+			width: 100vw;
+			height: 100%;
+			/* padding: 80px 0; */
+			list-style: none;
+			background-color: var(--background);
+			transition-duration: 0.25s;
+			text-align: center;
+			flex-direction: column;
+			justify-content: space-around;
+			z-index: 1;
+		}
+		a {
+			margin: 0.5rem !important;
+		}
+		li:hover {
+			background-color: var(--background);
+		}
 	}
 </style>
