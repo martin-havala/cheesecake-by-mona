@@ -18,7 +18,7 @@
 		</label>
 
 		<ul>
-			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
+			<li aria-current={$page.url.pathname.slice(-4) === 'mona' ? 'page' : undefined}>
 				<a href="{base}/" on:click={toggleMenu}>Home</a>
 			</li>
 			<li aria-current={$page.url.pathname.includes('/bake') ? 'page' : undefined}>
