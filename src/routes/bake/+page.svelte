@@ -28,24 +28,29 @@
 		<div class="params">
 			<div class="general">
 				<Saving bind:cake />
-				<div class="colorPatterns">
+				<div class="colorPattern">
 					<Generate bind:cake bind:activePaletteIndex />
 					<Basics bind:cake />
 				</div>
 			</div>
-			<div class="colorPatterns">
-				<ColorPatternForm bind:activePaletteIndex legend="Body" bind:cpProperty={cake.body} />
-				<ColorPatternForm bind:activePaletteIndex legend="Stroke" bind:cpProperty={cake.corpus} />
+			<div class="colorPattern">
+				<ColorPatternForm bind:activePaletteIndex legend="Body" bind:cpProperty={cake.body} area={'body'} />
+				<ColorPatternForm bind:activePaletteIndex legend="Stroke" bind:cpProperty={cake.corpus} area={'corpus'} />
 			</div>
-			<div class="colorPatterns">
-				<ColorPatternForm bind:activePaletteIndex legend="Filling" bind:cpProperty={cake.filling} />
-				<ColorPatternForm bind:activePaletteIndex legend="Filling Top" bind:cpProperty={cake.fillingTop} />
-				<ColorPatternForm bind:activePaletteIndex legend="Icing" bind:cpProperty={cake.icing} />
+			<div class="colorPattern">
+				<ColorPatternForm bind:activePaletteIndex legend="Filling" bind:cpProperty={cake.filling} area={'filling'} />
+				<ColorPatternForm bind:activePaletteIndex legend="Filling Top" bind:cpProperty={cake.fillingTop} area={'fillingTop'} />
+				<ColorPatternForm bind:activePaletteIndex legend="Icing" bind:cpProperty={cake.icing} area={'icing'} />
 			</div>
 
-			<div class="colorPatterns">
-				<ColorPatternForm bind:activePaletteIndex legend="Decoration" bind:cpProperty={cake.decoration} />
-				<ColorPatternForm bind:activePaletteIndex legend="DecorationStroke" bind:cpProperty={cake.decorationStroke} />
+			<div class="colorPattern">
+				<ColorPatternForm bind:activePaletteIndex legend="Decoration" bind:cpProperty={cake.decoration} area={'decoration'} />
+				<ColorPatternForm
+					bind:activePaletteIndex
+					legend="decorationStroke"
+					bind:cpProperty={cake.decorationStroke}
+					area={'decorationStroke'}
+				/>
 			</div>
 		</div>
 	</div>
@@ -105,7 +110,7 @@
 		}
 	}
 
-	.colorPatterns {
+	.colorPattern {
 		width: 100%;
 		display: flex;
 		flex-wrap: wrap;

@@ -1,4 +1,4 @@
-import { Patterns, Style, type CakeDTO } from '$lib/models/cake';
+import { Pattern, Style, type CakeDTO } from '$lib/models/cake';
 import { PALLETES, PALLETE_KEYS } from '$lib/models/palettes';
 
 export function randomColors(palette: string[], allowEmpty = false) {
@@ -20,7 +20,7 @@ export function randomStyle() {
 }
 
 export function randomPattern(allowEmpty = true) {
-	const length = Object.keys(Patterns).filter((a) => isNaN(+a)).length;
+	const length = Object.keys(Pattern).filter((a) => isNaN(+a)).length;
 	return Math.floor(Math.random() * (allowEmpty ? length : length - 1)) + (allowEmpty ? 0 : 1);
 }
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Decorations, Style, type CakeDTO } from '$lib/models/cake';
+	import { Decoration, Style, type CakeDTO } from '$lib/models/cake';
 
 	export let cake: CakeDTO;
 	let changeStyle = (e: Event) => {
@@ -21,10 +21,10 @@
 	<div class="decoration">
 		<label for="decoration">Decoration</label>
 		<select id="decoration" bind:value={cake.decorationType}>
-			{#each Object.keys(Decorations)
+			{#each Object.keys(Decoration)
 				.filter((a) => isNaN(+a))
 				.map((a, i) => i) as index}
-				<option value={index}>{Decorations[index]}</option>
+				<option value={index}>{Decoration[index]}</option>
 			{/each}
 		</select>
 	</div>

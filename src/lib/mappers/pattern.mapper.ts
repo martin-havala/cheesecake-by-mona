@@ -19,49 +19,49 @@ import DiagonalDashes from '$lib/components/patterns/diagonal-dashes.svelte';
 import DiagonalDashes2 from '$lib/components/patterns/diagonal-dashes-2.svelte';
 import Hideout from '$lib/components/patterns/hideout.svelte';
 import Stripes from '$lib/components/patterns/stripes.svelte';
-import { Patterns } from '$lib/models/cake';
+import { Pattern } from '$lib/models/cake';
 
-export function patternMapper(pattern?: Patterns): any {
+export function patternMapper(pattern?: Pattern): any {
 	switch (pattern) {
-		case Patterns.Hideout:
+		case Pattern.Hideout:
 			return Hideout;
-		case Patterns.DiagonalLines:
+		case Pattern.DiagonalLines:
 			return DiagonalLines;
-		case Patterns.DiagonalLines2:
+		case Pattern.DiagonalLines2:
 			return DiagonalLines2;
-		case Patterns.DiagonalLines3:
+		case Pattern.DiagonalLines3:
 			return DiagonalLines3;
-		case Patterns.Dashes:
+		case Pattern.Dashes:
 			return Dashes;
-		case Patterns.Dashes2:
+		case Pattern.Dashes2:
 			return Dashes2;
-		case Patterns.DiagonalDashes:
+		case Pattern.DiagonalDashes:
 			return DiagonalDashes;
-		case Patterns.DiagonalDashes2:
+		case Pattern.DiagonalDashes2:
 			return DiagonalDashes2;
-		case Patterns.Diamonds:
+		case Pattern.Diamonds:
 			return Diamonds;
-		case Patterns.Dots:
+		case Pattern.Dots:
 			return Dots;
-		case Patterns.Empty:
+		case Pattern.Empty:
 			return Gradient;
-		case Patterns.CharlieBrown:
+		case Pattern.CharlieBrown:
 			return CharlieBrown;
-		case Patterns.Chevron:
+		case Pattern.Chevron:
 			return Chevron;
-		case Patterns.Poppy:
+		case Pattern.Poppy:
 			return Poppy;
-		case Patterns.Rain:
+		case Pattern.Rain:
 			return Rain;
-		case Patterns.Sprinkles:
+		case Pattern.Sprinkles:
 			return Sprinkles;
-		case Patterns.Stripes:
+		case Pattern.Stripes:
 			return Stripes;
-		case Patterns.Triangles:
+		case Pattern.Triangles:
 			return Triangles;
-		case Patterns.Waves:
+		case Pattern.Waves:
 			return Waves;
-		case Patterns.Wiggle:
+		case Pattern.Wiggle:
 			return Wiggle;
 		default:
 			return Gradient;

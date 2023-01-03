@@ -1,4 +1,4 @@
-import { Decorations } from '$lib/models/cake';
+import { Decoration } from '$lib/models/cake';
 import Balls from '../components/decorations/balls.svelte';
 import Berries from '../components/decorations/berries.svelte';
 import Berry from '../components/decorations/berry.svelte';
@@ -10,27 +10,27 @@ import HighTop from '../components/decorations/high-top.svelte';
 import Oreo from '../components/decorations/oreo.svelte';
 import Trio from '../components/decorations/trio.svelte';
 
-export function decorationMapper(decoration: Decorations): any {
+export function decorationMapper(decoration: Decoration): any {
 	switch (decoration) {
-		case Decorations.Balls:
+		case Decoration.Balls:
 			return Balls;
-		case Decorations.Berries:
+		case Decoration.Berries:
 			return Berries;
-		case Decorations.Berry:
+		case Decoration.Berry:
 			return Berry;
-		case Decorations.Cherry:
+		case Decoration.Cherry:
 			return Cherry;
-		case Decorations.Cocochips:
+		case Decoration.Cocochips:
 			return CocoChips;
-		case Decorations.Cones:
+		case Decoration.Cones:
 			return Cones;
-		case Decorations.Heart:
+		case Decoration.Heart:
 			return Heart;
-		case Decorations.HighTop:
+		case Decoration.HighTop:
 			return HighTop;
-		case Decorations.Oreo:
+		case Decoration.Oreo:
 			return Oreo;
-		case Decorations.Trio:
+		case Decoration.Trio:
 			return Trio;
 	}
 }

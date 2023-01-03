@@ -1,37 +1,24 @@
 <script lang="ts">
-	import { Patterns, type ColorPattern } from '$lib/models/cake';
+	import type { ColorPattern } from '$lib/models/cake';
 	import ColorInput from './color-input.svelte';
+	import PatternInput from './pattern-input.svelte';
 
-	export let cpProperty: ColorPattern = {};
+	export let cpProperty: ColorPattern = { pattern: 0 };
 	export let activePaletteIndex = 0;
 	export let legend: string;
+	export let area: string;
 
-	let getInputValue = (e: Event) => (e.target as HTMLInputElement).value;
 	const exchangeColors = () => ([cpProperty.secondaryColor, cpProperty.color] = [cpProperty.color, cpProperty.secondaryColor]);
 </script>
 
 <fieldset class="color-pattern-form">
-	<legend>{@html legend} <button on:click={(e) => (cpProperty = {})}>Remove</button></legend>
+	<legend>{@html legend} <button on:click={(e) => (cpProperty = { pattern: 0 })}>Remove</button></legend>
 
 	<ColorInput bind:activePaletteIndex bind:value={cpProperty.color}>color1</ColorInput>
 	<button on:click={exchangeColors}>⇋</button>
 	<ColorInput bind:activePaletteIndex bind:value={cpProperty.secondaryColor}>color 2</ColorInput>
 
-	<div class="pattern">
-		<label for="{legend}-pattern">Pattern: </label>
-		<select
-			id="{legend}-pattern"
-			placeholder="Pattern"
-			value={cpProperty.pattern}
-			on:change={(e) => (cpProperty.pattern = +getInputValue(e))}
-		>
-			{#each Object.values(Patterns)
-				.filter((a) => isNaN(+a))
-				.map((a, i) => i) as index}
-				<option value={index}>{Patterns[index]} </option>
-			{/each}
-		</select>
-	</div>
+	<PatternInput bind:value={cpProperty}  {area}/>
 </fieldset>
 
 <style>

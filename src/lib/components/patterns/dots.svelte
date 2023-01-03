@@ -9,8 +9,8 @@
 	<rect
 		x="0"
 		y="0"
-		width="100%"
-		height="100%"
+		width="40"
+		height="40"
 		style="fill: {cake[area].secondaryColor || cake.body.secondaryColor || 'transparent'};"
 	/>
 

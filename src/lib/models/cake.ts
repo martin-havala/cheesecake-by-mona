@@ -1,4 +1,4 @@
-export enum Decorations {
+export enum Decoration {
 	None,
 	Balls,
 	Berries,
@@ -12,7 +12,7 @@ export enum Decorations {
 	Trio
 }
 
-export enum Patterns {
+export enum Pattern {
 	Empty,
 	Hideout,
 	Chevron,
@@ -32,7 +32,6 @@ export enum Patterns {
 	Stripes,
 	Triangles,
 	Waves,
-	WavesStacked,
 	Wiggle
 }
 
@@ -44,7 +43,7 @@ export enum Style {
 export interface ColorPattern {
 	color?: string;
 	secondaryColor?: string;
-	pattern?: Patterns;
+	pattern?: Pattern;
 }
 
 export type CakeArea = 'corpus' | 'body' | 'icing' | 'decoration' | 'decorationStroke' | 'filling' | 'fillingTop';
@@ -52,7 +51,7 @@ export type CakeArea = 'corpus' | 'body' | 'icing' | 'decoration' | 'decorationS
 export interface CakeDTO {
 	name?: string;
 	printOrder?: number;
-	decorationType: Decorations;
+	decorationType: Decoration;
 	midSection?: boolean;
 	style: Style;
 
