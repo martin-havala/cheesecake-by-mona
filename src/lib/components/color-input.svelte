@@ -12,11 +12,10 @@
 	}
 
 	function drop(e: DragEvent) {
-		console.log('drop', e.dataTransfer);
 		e.preventDefault();
 		e.stopPropagation();
-		const data = e.dataTransfer?.getData('text');
-		!!data && (value = data);
+		const data = e.dataTransfer?.getData('text') ?? '';
+		if (/#[\dabcdef]{6}/i.test(data)) value = data;
 	}
 
 	function validateClick(e: Event) {

@@ -5,9 +5,6 @@ body {
 	padding: 0;
 	margin: 0;
 	color: var(--color-text);
-	display: flex;
-	flex-direction: column;
-	height: 100vh;
 	--background: var(--color-background)
 		url("data:image/svg+xml,%3Csvg version='1.1' class='h-4 text-dark' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1' width='10' height='10' %3E%3Cpath d='M0,0 h.1v.1h-.1z M.5,.5 h.1v.1h-.1z' style='fill:8a9283;fill-opacity:.2' /%3E%3C/svg%3E")
 		repeat right top;

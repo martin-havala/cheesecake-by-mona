@@ -10,7 +10,7 @@
 
 	const bakeACake = () => {
 		cake = generateCake(
-			false,
+			true,
 			PALLETE_KEYS.findIndex((p) => p == 'Retro')
 		);
 	};

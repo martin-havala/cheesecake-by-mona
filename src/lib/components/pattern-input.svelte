@@ -31,10 +31,32 @@
 			show = false;
 		}
 	}
+
+	function drag(e: DragEvent) {
+		e.dataTransfer?.setData('text', `${value.pattern}`);
+	}
+
+	function drop(e: DragEvent) {
+		e.preventDefault();
+		e.stopPropagation();
+		const data = +(e.dataTransfer?.getData('text') ?? ')');
+		if (!isNaN(data)) {
+			value = { ...value, pattern: +data };
+		}
+	}
 </script>
 
 <div class="pattern-input">
-	<button on:click={(e) => (show = !show)} class="pattern-input__button">
+	<button
+		on:click={(e) => (show = !show)}
+		class="pattern-input__button"
+		draggable="true"
+		on:dragstart={drag}
+		on:drop={drop}
+		on:dragover={(ev) => {
+			ev.preventDefault();
+		}}
+	>
 		{#if !value.pattern}
 			<div class="pattern-input__placeholder">pattern</div>
 		{:else}

@@ -70,9 +70,9 @@ export function generateCake(allowEmpty = true, paletteIndex?: number): CakeDTO 
 			};
 	}
 	if (!allowEmpty) {
-		newCake.icing.pattern = randomPattern(allowEmpty);
-		newCake.filling.pattern = randomPattern(allowEmpty);
-		newCake.fillingTop.pattern = randomPattern(allowEmpty);
+		newCake.icing = { ...randomColors(selectedPalette), pattern: randomPattern(allowEmpty) };
+		newCake.filling = { ...randomColors(selectedPalette), pattern: randomPattern(allowEmpty) };
+		newCake.fillingTop = { ...randomColors(selectedPalette), pattern: randomPattern(allowEmpty) };
 	}
 
 	newCake.midSection = Math.random() > 0.5 && newCake.style != Style.Inset;
