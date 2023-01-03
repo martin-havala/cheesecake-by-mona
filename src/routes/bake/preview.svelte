@@ -35,9 +35,9 @@
 	.preview__svg {
 		flex: 0 1 auto;
 		text-align: center;
-
 		width: 100%;
 		padding: 0.5rem;
+		border-radius: var(--border-radius);
 	}
 	.preview__svg :global(svg) {
 		max-width: 36vh;

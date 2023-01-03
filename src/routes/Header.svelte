@@ -26,8 +26,8 @@
 			<li aria-current={$page.url.pathname.includes('/menu') ? 'page' : undefined}>
 				<a href="{base}/menu" on:click={toggleMenu}>Menu</a>
 			</li>
-			<li aria-current={$page.url.pathname.includes('/byMona') ? 'page' : undefined}>
-				<a href="{base}/byMona" on:click={toggleMenu}>ByMona</a>
+			<li aria-current={$page.url.pathname.includes('/logo') ? 'page' : undefined}>
+				<a href="{base}/logo" on:click={toggleMenu}>ByMona</a>
 			</li>
 		</ul>
 	</nav>

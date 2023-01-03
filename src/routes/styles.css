@@ -93,6 +93,9 @@ hr {
 		--color-text-menu: #d6664c;
 		--color-theme-1: #d6664c;
 	}
+	.preview__svg {
+		background-color: #f6f6ee;
+	}
 }
 
 @media (prefers-color-scheme: light) {
