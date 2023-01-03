@@ -83,6 +83,9 @@
 <style>
 	svg {
 		background: white;
+		width: 100%;
+		height: auto;
+		aspect-ratio: 1;
 		border-radius: 50%;
 	}
 </style>

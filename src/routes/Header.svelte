@@ -1,6 +1,5 @@
 <script>
 	import { page } from '$app/stores';
-	import github from '$lib/images/github-mark.svg';
 
 	import { base } from '$app/paths';
 
@@ -18,8 +17,8 @@
 		</label>
 
 		<ul>
-			<li aria-current={$page.url.pathname.slice(-4) === 'mona' ? 'page' : undefined}>
-				<a href="{base}" on:click={toggleMenu}>Home</a>
+			<li aria-current={$page.url.pathname.includes('mona', -5) ? 'page' : undefined}>
+				<a href="{base}/" on:click={toggleMenu}>Home</a>
 			</li>
 			<li aria-current={$page.url.pathname.includes('/bake') ? 'page' : undefined}>
 				<a href="{base}/bake" on:click={toggleMenu}>Bake</a>
@@ -32,12 +31,6 @@
 			</li>
 		</ul>
 	</nav>
-
-	<div class="corner">
-		<a href="https://github.com/martin-havala/cheesecake-by-mona">
-			<img src={github} alt="GitHub" />
-		</a>
-	</div>
 </header>
 
 <style>
@@ -49,22 +42,6 @@
 		justify-content: space-between;
 		background: var(--background);
 		z-index: 1;
-	}
-
-	.corner {
-		position: fixed;
-		width: 3em;
-		height: 3em;
-		right: 0;
-		top: 0;
-		z-index: 0;
-	}
-
-	.corner img {
-		width: 2em;
-		height: 2em;
-		padding: 0.5em;
-		object-fit: contain;
 	}
 
 	nav {

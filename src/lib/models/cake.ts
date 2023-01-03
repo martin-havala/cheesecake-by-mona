@@ -23,7 +23,6 @@ export enum Patterns {
 	Dashes2,
 	DiagonalDashes,
 	DiagonalDashes2,
-	DiagonalStripes,
 	Diamonds,
 	Dots,
 	CharlieBrown,

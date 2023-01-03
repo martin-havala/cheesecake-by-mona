@@ -9,14 +9,13 @@ body {
 		var(--background);
 	background-size: 10px 10px;
 	color: var(--color-text);
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
 }
 
 section {
-	display: flex;
-	flex-direction: column;
-	justify-content: start;
-	align-items: center;
-	flex: 0.6;
+	text-align: center;
 }
 
 fieldset {
@@ -32,6 +31,7 @@ h3 {
 	width: 100%;
 	text-align: center;
 	font-family: 'Amatic SC';
+	margin: 0 0 0.5em 0;
 }
 
 button,
@@ -69,6 +69,11 @@ svg {
 	font-family: 'Amatic SC';
 }
 
+hr {
+	border: none;
+	border-bottom: 1px solid var(--color-frames);
+	width: 100%;
+}
 .tiny {
 	font-size: 0.7em;
 	opacity: 0.8;

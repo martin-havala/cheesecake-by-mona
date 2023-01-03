@@ -10,7 +10,7 @@
 	const exchangeColors = () => ([cpProperty.secondaryColor, cpProperty.color] = [cpProperty.color, cpProperty.secondaryColor]);
 </script>
 
-<fieldset>
+<fieldset class="color-pattern-form">
 	<legend>{@html legend} <button on:click={(e) => (cpProperty = {})}>Remove</button></legend>
 
 	<ColorInput bind:activePaletteIndex bind:value={cpProperty.color}>color1</ColorInput>
@@ -18,7 +18,7 @@
 	<ColorInput bind:activePaletteIndex bind:value={cpProperty.secondaryColor}>color 2</ColorInput>
 
 	<div class="pattern">
-		<label for="{legend}-pattern">pattern</label>
+		<label for="{legend}-pattern">Pattern: </label>
 		<select
 			id="{legend}-pattern"
 			placeholder="Pattern"
