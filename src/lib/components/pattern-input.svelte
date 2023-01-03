@@ -9,12 +9,13 @@
 	export let colorPattern: ColorPattern = { color: 'black', secondaryColor: 'white' };
 	const cake: CakeDTO = {
 		decorationType: 1,
-		corpus: {},
 		style: 0,
 		body: colorPattern,
+		bodyStroke: colorPattern,
 		decorationStroke: {},
 		decoration: {},
 		icing: {},
+		icingStroke: {},
 		filling: {},
 		fillingTop: {},
 		midSection: true,
@@ -36,11 +37,12 @@
 	<button on:click={(e) => (show = !show)} class="pattern-input__button">
 		{#if !value.pattern}
 			<div class="pattern-input__placeholder">pattern</div>
+		{:else}
+			<svg viewBox="0 0 50 25">
+				<svelte:component this={patternMapper(value.pattern)} {id} {cake} {area} />
+				<rect x="0" y="0" width="100%" height="100%" style="fill:url(#{area}-{id})" />
+			</svg>
 		{/if}
-		<svg viewBox="0 0 50 25">
-			<svelte:component this={patternMapper(value.pattern)} {id} {cake} {area} />
-			<rect x="0" y="0" width="100%" height="100%" style="fill:url(#{area}-{id})" />
-		</svg>
 	</button>
 	{#if show}
 		<div class="pattern-list">
@@ -100,7 +102,7 @@
 	.pattern-list {
 		min-width: 12rem;
 		position: absolute;
-		right:0;
+		right: 0;
 		background: var(--color-background);
 		padding: 0.5rem;
 		border: 1px solid var(--color-frames);

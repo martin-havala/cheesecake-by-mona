@@ -37,12 +37,13 @@
 		cake = {
 			...defaultCake,
 			body: { ...defaultCake.body, color: dark, secondaryColor: dark },
+			bodyStroke: { ...defaultCake.bodyStroke, color: dark, secondaryColor: dark },
 			icing: { ...defaultCake.icing, color: light, secondaryColor: dark },
-			decorationStroke: { ...defaultCake.decorationStroke, color: light, secondaryColor: light },
+			icingStroke: { ...defaultCake.icingStroke, color: light, secondaryColor: light },
 			decoration: { ...defaultCake.decoration, color: dark, secondaryColor: dark },
+			decorationStroke: { ...defaultCake.decorationStroke, color: light, secondaryColor: light },
 			filling: { ...defaultCake.filling, color: light, secondaryColor: dark },
 			fillingTop: { ...defaultCake.fillingTop, color: light, secondaryColor: dark },
-			corpus: { ...defaultCake.corpus, color: dark, secondaryColor: dark },
 			midSection: false,
 			style: Style.Inset
 		};

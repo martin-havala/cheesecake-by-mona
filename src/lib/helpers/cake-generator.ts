@@ -33,18 +33,19 @@ export function generateCake(allowEmpty = true, paletteIndex?: number): CakeDTO 
 
 	const newCake: CakeDTO = {
 		decorationType: Math.floor(Math.random() * 11),
-		corpus: { color: '#000000', secondaryColor: '#000000' },
+		bodyStroke: { color: '#000000', secondaryColor: '#000000' },
 		style: randomStyle(),
 		body: randomColors(selectedPalette, false),
 		decorationStroke: {},
 		decoration: {},
 		icing: {},
+		icingStroke: {},
 		filling: {},
 		fillingTop: {}
 	};
 
 	if (selectedPaletteIndex === PALLETE_KEYS.findIndex((p) => p == 'Neon')) {
-		newCake.corpus = randomColors(selectedPalette);
+		newCake.bodyStroke = randomColors(selectedPalette);
 	}
 
 	const r = Math.random();

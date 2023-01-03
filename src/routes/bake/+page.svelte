@@ -10,8 +10,6 @@
 	import Saving from './saving.svelte';
 
 	let cake: CakeDTO = DEFAULT_CAKES[0];
-	let showAsLogo = false;
-
 	let activePaletteIndex = PALLETE_KEYS.findIndex((k) => k == 'Retro');
 </script>
 
@@ -35,19 +33,27 @@
 			</div>
 			<div class="colorPattern">
 				<ColorPatternForm bind:activePaletteIndex legend="Body" bind:cpProperty={cake.body} area={'body'} />
-				<ColorPatternForm bind:activePaletteIndex legend="Stroke" bind:cpProperty={cake.corpus} area={'corpus'} />
+				<ColorPatternForm bind:activePaletteIndex legend="Stroke" bind:cpProperty={cake.bodyStroke} area={'bodyStroke'} />
 			</div>
 			<div class="colorPattern">
 				<ColorPatternForm bind:activePaletteIndex legend="Filling" bind:cpProperty={cake.filling} area={'filling'} />
 				<ColorPatternForm bind:activePaletteIndex legend="Filling Top" bind:cpProperty={cake.fillingTop} area={'fillingTop'} />
+			</div>
+			<div class="colorPattern">
 				<ColorPatternForm bind:activePaletteIndex legend="Icing" bind:cpProperty={cake.icing} area={'icing'} />
+				<ColorPatternForm
+					bind:activePaletteIndex
+					legend="Icing Stroke"
+					bind:cpProperty={cake.icingStroke}
+					area={'icingStroke'}
+				/>
 			</div>
 
 			<div class="colorPattern">
 				<ColorPatternForm bind:activePaletteIndex legend="Decoration" bind:cpProperty={cake.decoration} area={'decoration'} />
 				<ColorPatternForm
 					bind:activePaletteIndex
-					legend="decorationStroke"
+					legend="Decoration stroke"
 					bind:cpProperty={cake.decorationStroke}
 					area={'decorationStroke'}
 				/>

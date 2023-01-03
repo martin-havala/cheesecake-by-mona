@@ -18,7 +18,7 @@
 	<button on:click={exchangeColors}>⇋</button>
 	<ColorInput bind:activePaletteIndex bind:value={cpProperty.secondaryColor}>color 2</ColorInput>
 
-	<PatternInput bind:value={cpProperty}  {area}/>
+	<PatternInput bind:value={cpProperty} {area}/>
 </fieldset>
 
 <style>

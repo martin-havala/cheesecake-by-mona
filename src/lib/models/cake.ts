@@ -46,7 +46,15 @@ export interface ColorPattern {
 	pattern?: Pattern;
 }
 
-export type CakeArea = 'corpus' | 'body' | 'icing' | 'decoration' | 'decorationStroke' | 'filling' | 'fillingTop';
+export type CakeArea =
+	| 'bodyStroke'
+	| 'body'
+	| 'icing'
+	| 'icingStroke'
+	| 'decoration'
+	| 'decorationStroke'
+	| 'filling'
+	| 'fillingTop';
 
 export interface CakeDTO {
 	name?: string;
@@ -55,9 +63,10 @@ export interface CakeDTO {
 	midSection?: boolean;
 	style: Style;
 
-	corpus: ColorPattern;
 	body: ColorPattern;
+	bodyStroke: ColorPattern;
 	icing: ColorPattern;
+	icingStroke: ColorPattern;
 	decoration: ColorPattern;
 	decorationStroke: ColorPattern;
 	filling: ColorPattern;
