@@ -7,6 +7,7 @@
 	import { downloadSVG } from '$lib/helpers/download-SVG';
 	import type { CakeDTO } from '$lib/models/cake';
 	import { onMount } from 'svelte';
+	import { fly } from 'svelte/transition';
 
 	let ls: Storage;
 
@@ -90,8 +91,8 @@
 			</div>
 
 			<div class="menu-list">
-				{#each cakeList as cake}
-					<div class="cakeRow">
+				{#each cakeList as cake, index}
+					<div class="cakeRow" in:fly={{ y: -50, duration: 500, delay: 50 * index }}>
 						<div class="cakeRow__item">
 							<button class="cakeRow__button flat" on:click={(e) => printCake(cake)}>
 								<div class="cake">
@@ -122,8 +123,8 @@
 					<Print {printList} />
 				</div>
 
-				{#each printList as cake}
-					<div class="cakeRow">
+				{#each printList as cake, index}
+					<div class="cakeRow" in:fly={{ y: -50, duration: 500, delay: 50 * index }}>
 						<div class="cakeRow__item">
 							<button class="cakeRow__button superflat flat" on:click={(e) => removeCake(cake, true)}>
 								<div class="cake">

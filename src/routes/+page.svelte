@@ -5,6 +5,7 @@
 	import type { CakeDTO } from '$lib/models/cake';
 	import { PALLETE_KEYS } from '$lib/models/palettes';
 	import { onMount } from 'svelte';
+	import { fade, fly } from 'svelte/transition';
 
 	let items: CakeDTO[] = [];
 	let activePalette = PALLETE_KEYS.findIndex((key) => key == 'Retro') ?? 0;
@@ -37,11 +38,17 @@
 	<button on:click={(e) => regenerateItems(activePalette)}>Bake a new batch </button>
 
 	<div class="bakery">
-		{#each items as cake}
-			<a href={getBakeUrl(cake)} class="cake">
-				<Cake {cake} />
-			</a>
-		{/each}
+		{#key items}
+			{#each items as cake}
+				<a
+					href={getBakeUrl(cake)}
+					class="cake"
+					in:fly={{ y: -50, duration: 500, delay: Math.random() * 2_000 }}
+				>
+					<Cake {cake} />
+				</a>
+			{/each}
+		{/key}
 	</div>
 </section>
 
