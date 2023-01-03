@@ -51,7 +51,7 @@
 
 	.github {
 		position: absolute;
-		right: .5rem;
+		right: 0.5rem;
 		bottom: 0.25rem;
 	}
 

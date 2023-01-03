@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { CakeDTO } from '$lib/models/cake';
-	import CakeContent from './cakeContent.svelte';
+	import CakeContent from './cake-content.svelte';
 
 	export let cake: CakeDTO;
 	export let id: string = Math.random().toString();

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { generateCake } from '$lib/helpers/cakeGenerator';
+	import { generateCake } from '$lib/helpers/cake-generator';
 	import { Style, type CakeDTO } from '$lib/models/cake';
 	import { PALLETE_KEYS } from '$lib/models/palettes';
 

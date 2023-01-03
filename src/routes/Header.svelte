@@ -145,7 +145,7 @@
 			height: 100%;
 			/* padding: 80px 0; */
 			list-style: none;
-			background-color: var(--background);
+			background-color: var(--color-background);
 			transition-duration: 0.25s;
 			text-align: center;
 			flex-direction: column;
@@ -156,7 +156,7 @@
 			margin: 0.5rem !important;
 		}
 		li:hover {
-			background-color: var(--background);
+			background-color: var(--color-background);
 		}
 	}
 </style>

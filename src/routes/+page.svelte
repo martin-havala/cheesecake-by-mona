@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Cake from '$lib/components/cake.svelte';
 	import { getBakeUrl } from '$lib/helpers/bake-url';
-	import { generateCake } from '$lib/helpers/cakeGenerator';
+	import { generateCake } from '$lib/helpers/cake-generator';
 	import type { CakeDTO } from '$lib/models/cake';
 	import { PALLETE_KEYS } from '$lib/models/palettes';
 	import { onMount } from 'svelte';

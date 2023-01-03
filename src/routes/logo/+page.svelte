@@ -1,8 +1,8 @@
 <script lang="ts">
 	import ByMona from '$lib/components/byMona.svelte';
 	import Cake from '$lib/components/cake.svelte';
-	import { generateCake } from '$lib/helpers/cakeGenerator';
-	import { downloadSVG } from '$lib/helpers/downloadSVG';
+	import { generateCake } from '$lib/helpers/cake-generator';
+	import { downloadSVG } from '$lib/helpers/download-SVG';
 	import type { CakeDTO } from '$lib/models/cake';
 	import { PALLETE_KEYS } from '$lib/models/palettes';
 

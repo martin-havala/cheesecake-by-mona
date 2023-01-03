@@ -1,6 +1,7 @@
-export const DEFAULT_CAKES = [
+import type { CakeDTO } from '$lib/models/cake';
+
+export const DEFAULT_CAKES: CakeDTO[] = [
 	{
-		default: true,
 		decorationType: 1,
 		corpus: { color: '#000000', secondaryColor: '#000000' },
 		style: 0,
@@ -11,10 +12,9 @@ export const DEFAULT_CAKES = [
 		filling: { color: '#F6E0B2', secondaryColor: '#BA555C', pattern: 10 },
 		fillingTop: { color: '#C2977D', secondaryColor: '#E3B98F', pattern: 4 },
 		midSection: true,
-		name: 'Creamy strawberry '
+		name: 'Creamy strawberry',
 	},
 	{
-		default: true,
 		decorationType: 3,
 		corpus: { color: '#000000', secondaryColor: '#000000' },
 		style: 0,
@@ -28,7 +28,6 @@ export const DEFAULT_CAKES = [
 		name: 'Raspberry choco'
 	},
 	{
-		default: true,
 		decorationType: 6,
 		corpus: { color: '#000000', secondaryColor: '#000000' },
 		style: 1,
@@ -42,7 +41,6 @@ export const DEFAULT_CAKES = [
 		name: 'Simple caramel'
 	},
 	{
-		default: true,
 		decorationType: 1,
 		corpus: { color: '#000000', secondaryColor: '#000000' },
 		style: 0,
@@ -56,7 +54,6 @@ export const DEFAULT_CAKES = [
 		name: 'Simple pleasure'
 	},
 	{
-		default: true,
 		decorationType: 9,
 		corpus: { color: '#000000', secondaryColor: '#000000' },
 		style: 1,

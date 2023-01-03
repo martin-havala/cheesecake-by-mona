@@ -78,6 +78,8 @@
 	.color-input__palette {
 		position: relative;
 		display: inline;
+		z-index: 100;
+
 	}
 	.palette__footer {
 		width: 100%;
@@ -95,7 +97,7 @@
 		margin: 0 !important;
 		row-gap: 0 !important;
 		padding: 0.5rem !important;
-		background-color: var(--background) !important;
+		background: var(--color-background) !important;
 		border: 1px solid var(--color-frames);
 		z-index: 1;
 	}

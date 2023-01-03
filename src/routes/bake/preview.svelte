@@ -1,7 +1,7 @@
 <script lang="ts">
 	import ByMona from '$lib/components/byMona.svelte';
 	import Cake from '$lib/components/cake.svelte';
-	import { downloadSVG } from '$lib/helpers/downloadSVG';
+	import { downloadSVG } from '$lib/helpers/download-SVG';
 	import type { CakeDTO } from '$lib/models/cake';
 
 	export let cake: CakeDTO;
@@ -36,7 +36,7 @@
 		flex: 0 1 auto;
 		text-align: center;
 		width: 100%;
-		padding: 0.5rem;
+		margin: 0.5rem;
 		border-radius: var(--border-radius);
 	}
 	.preview__svg :global(svg) {

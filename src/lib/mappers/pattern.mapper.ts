@@ -1,7 +1,7 @@
 import Chevron from '$lib/components/patterns/chevron.svelte';
-import DiagonalLines from '$lib/components/patterns/diagonalLines.svelte';
-import DiagonalLines2 from '$lib/components/patterns/diagonalLines2.svelte';
-import DiagonalLines3 from '$lib/components/patterns/diagonalLines3.svelte';
+import DiagonalLines from '$lib/components/patterns/diagonal-lines.svelte';
+import DiagonalLines2 from '$lib/components/patterns/diagonal-lines-2.svelte';
+import DiagonalLines3 from '$lib/components/patterns/diagonal-lines-3.svelte';
 import Diamonds from '$lib/components/patterns/diamonds.svelte';
 import Dots from '$lib/components/patterns/dots.svelte';
 import Gradient from '$lib/components/patterns/gradient.svelte';
@@ -12,11 +12,11 @@ import Triangles from '$lib/components/patterns/triangles.svelte';
 import Waves from '$lib/components/patterns/waves.svelte';
 import Wiggle from '$lib/components/patterns/wiggle.svelte';
 
-import CharlieBrown from '$lib/components/patterns/charlieBrown.svelte';
+import CharlieBrown from '$lib/components/patterns/charlie-brown.svelte';
 import Dashes from '$lib/components/patterns/dashes.svelte';
 import Dashes2 from '$lib/components/patterns/dashes2.svelte';
-import DiagonalDashes from '$lib/components/patterns/diagonalDashes.svelte';
-import DiagonalDashes2 from '$lib/components/patterns/diagonalDashes2.svelte';
+import DiagonalDashes from '$lib/components/patterns/diagonal-dashes.svelte';
+import DiagonalDashes2 from '$lib/components/patterns/diagonal-dashes-2.svelte';
 import Hideout from '$lib/components/patterns/hideout.svelte';
 import Stripes from '$lib/components/patterns/stripes.svelte';
 import { Patterns } from '$lib/models/cake';
