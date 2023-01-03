@@ -18,7 +18,15 @@
 		const data = e.dataTransfer?.getData('text');
 		!!data && (value = data);
 	}
+
+	function validateClick(e: Event) {
+		if ((e.target as HTMLElement).querySelector('.color-input__palette')) {
+			show = false;
+		}
+	}
 </script>
+
+<svelte:window on:click={validateClick} />
 
 <button
 	class="color-input__btn"
@@ -79,7 +87,6 @@
 		position: relative;
 		display: inline;
 		z-index: 100;
-
 	}
 	.palette__footer {
 		width: 100%;

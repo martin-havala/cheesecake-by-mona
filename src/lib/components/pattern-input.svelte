@@ -24,6 +24,12 @@
 	for (let pattern of Object.keys(Pattern).filter((a) => isNaN(+a))) {
 		Pattern[pattern as any] && patterns.push(Pattern[pattern as any]);
 	}
+
+	function validateClick(e: Event) {
+		if ((e.target as HTMLElement).querySelector('.pattern-input')) {
+			show = false;
+		}
+	}
 </script>
 
 <div class="pattern-input">
@@ -63,6 +69,8 @@
 		</div>
 	{/if}
 </div>
+
+<svelte:window on:click={validateClick} />
 
 <style>
 	.pattern-input {
