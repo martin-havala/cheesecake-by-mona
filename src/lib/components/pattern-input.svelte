@@ -100,6 +100,7 @@
 	.pattern-list {
 		min-width: 12rem;
 		position: absolute;
+		right:0;
 		background: var(--color-background);
 		padding: 0.5rem;
 		border: 1px solid var(--color-frames);
