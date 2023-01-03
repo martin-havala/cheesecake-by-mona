@@ -39,7 +39,7 @@
 			body: { ...defaultCake.body, color: dark, secondaryColor: dark },
 			bodyStroke: { ...defaultCake.bodyStroke, color: dark, secondaryColor: dark },
 			icing: { ...defaultCake.icing, color: light, secondaryColor: dark },
-			icingStroke: { ...defaultCake.icingStroke, color: light, secondaryColor: light },
+			icingStroke: { ...defaultCake.icingStroke, color: dark, secondaryColor: dark },
 			decoration: { ...defaultCake.decoration, color: dark, secondaryColor: dark },
 			decorationStroke: { ...defaultCake.decorationStroke, color: light, secondaryColor: light },
 			filling: { ...defaultCake.filling, color: light, secondaryColor: dark },
