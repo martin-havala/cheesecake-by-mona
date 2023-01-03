@@ -24,7 +24,7 @@
 
 <section>
 	<h1>Generate logo with random cake</h1>
-	<button on:click={bakeACake} style="border:none; padding: 2rem; border-radius: 50%; background:#fdfdfd;">
+	<button on:click={bakeACake} style="border:none;">
 		<div class="text-column">
 			<ByMona id="byMona">
 				<Cake {cake} id="cake" wrap={false} />
