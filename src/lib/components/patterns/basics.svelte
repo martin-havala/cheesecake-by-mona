@@ -11,7 +11,7 @@
 
 <linearGradient id="gradient-corpus-{id}" x1="0" y1="44" x2="1" y2="182" gradientUnits="userSpaceOnUse">
 	<stop offset="0" style="stop-color:{cake.corpus.color || '#222'};" />
-	<stop offset="1" style="stop-color:{cake.corpus.secondaryColor || '#222'};" />
+	<stop offset="1" style="stop-color:{cake.corpus.secondaryColor || cake.corpus.color || '#222'};" />
 </linearGradient>
 
 <linearGradient id="gradient-icing-{id}" x1="0" y1="44" x2="1" y2="92" gradientUnits="userSpaceOnUse">

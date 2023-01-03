@@ -79,3 +79,10 @@
 		<slot />
 	</g>
 </svg>
+
+<style>
+	svg {
+		background: white;
+		border-radius: 50%;
+	}
+</style>

@@ -96,10 +96,7 @@
 				</fieldset>
 				<fieldset>
 					<legend>Basics (won't change during randomization)</legend>
-					<div class="inset">
-						<label for="style">Render in logo</label>
-						<input id="style" type="checkbox" bind:checked={showAsLogo} />
-					</div>
+
 					<div class="inset">
 						<label for="style">Render as inset</label>
 						<input id="style" type="checkbox" checked={cake.style == Style.Inset} on:change={changeStyle} />
@@ -122,16 +119,15 @@
 			</div>
 
 			<div class="cake">
+				<button on:click={(e) => (showAsLogo = !showAsLogo)}>Toggle Preview</button>
+				<button on:click={(e) => downloadSVG(document.getElementById('preview'), 'byMona-cake.svg')}>Download</button>
+				<br />
 				{#if showAsLogo}
-					<ByMona id="previewLogo">
+					<ByMona id="preview">
 						<Cake {cake} wrap={false} />
 					</ByMona>
-					<br />
-					<button on:click={(e) => downloadSVG(document.getElementById('previewLogo'), 'byMona.svg')}>Download</button>
 				{:else}
 					<Cake {cake} id="preview" />
-					<br />
-					<button on:click={(e) => downloadSVG(document.getElementById('preview'), 'byMona-cake.svg')}>Download</button>
 				{/if}
 			</div>
 		</div>
@@ -180,11 +176,5 @@
 
 		max-width: 36vh;
 		max-height: 36vh;
-		margin-top: -4vh;
-	}
-
-	:global(#previewLogo) {
-		background: white;
-		border-radius: 50%;
 	}
 </style>
