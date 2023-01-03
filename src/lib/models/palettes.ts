@@ -202,7 +202,70 @@ export const PALLETES: { [id: string]: string[] } = {
 		'#0B4831',
 		'#063222',
 		'#24503D'
-	]
+	],
+	// https://www.pixilart.com/palettes/good-pastelness-14050
+	GoodPastelness: [
+		'#C6F6DE',
+		'#B7E4CE',
+		'#A4C8B6',
+		'#EBC3F6',
+		'#CEABD8',
+		'#B798C0',
+		'#F2C4EA',
+		'#D4AECD',
+		'#C698BD',
+		'#EEA9AE',
+		'#D1979B',
+		'#B17D80',
+		'#F4ECBB',
+		'#D5CEA2',
+		'#F9EEA9',
+		'#CAD2F3',
+		'#A1ABD4',
+		'#9DA5C3'
+	],
+	// https://www.pixilart.com/palettes/pastel-59795
+	Pastel: [
+		'#EBAB99',
+		'#D95763',
+		'#B34C5A',
+		'#F3BC91',
+		'#EB7D43',
+		'#C16A40',
+		'#FACC7E',
+		'#FB9E27',
+		'#CE8429',
+		'#F5E487',
+		'#E6C912',
+		'#BDA619',
+		'#D3E387',
+		'#A7D03A',
+		'#8BAB39',
+		'#BDE898',
+		'#75DB60',
+		'#64B457',
+		'#99E4E8',
+		'#2AC9DE',
+		'#29A6BA',
+		'#AECAF8',
+		'#639BFF',
+		'#5681D5',
+		'#C2BCE4',
+		'#8983EC',
+		'#746FC7',
+		'#D2B3E6',
+		'#AA6EDB',
+		'#8E5EB8',
+		'#EDB2E5',
+		'#DD6CD9',
+		'#B65CB7',
+		'#F5B9D8',
+		'#ED77B4',
+		'#C36599',
+		'#FFFFFF'
+	],
+	// https://www.pixilart.com/palettes/epic-32-11147  
+	Epic32:["#453096","#4F65A8","#5C94D1","#87D4FA","#B8F2FF","#EBF5E7","#D6E6E1","#BED4D1","#A1B9BD","#858FAD","#614E85","#4F2269","#3D013D","#662545","#8A3A4E","#BA5D5D","#D67F71","#8F2B74","#D4618D","#F095AC","#FFBDBD","#FFE0DB","#D15069","#EB746C","#EB9E7B","#F0C590","#F0DFAD","#ECF0B4","#C0FAA3","#7AE69E","#5ECCA7","#51A6B0"]
 };
 
 export const INDEX_TO_PALLETE_MAP: { [id: number]: string[] } = Object.keys(PALLETES).reduce(

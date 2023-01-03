@@ -10,31 +10,29 @@
 	const exchangeColors = () => ([cpProperty.secondaryColor, cpProperty.color] = [cpProperty.color, cpProperty.secondaryColor]);
 </script>
 
-<form>
-	<fieldset>
-		<legend>{@html legend} <button on:click={(e) => (cpProperty = {})}>Remove</button></legend>
+<fieldset>
+	<legend>{@html legend} <button on:click={(e) => (cpProperty = {})}>Remove</button></legend>
 
-		<ColorInput bind:activePaletteIndex bind:value={cpProperty.color}>color1</ColorInput>
-		<button on:click={exchangeColors}>⇋</button>
-		<ColorInput bind:activePaletteIndex bind:value={cpProperty.secondaryColor}>color 2</ColorInput>
+	<ColorInput bind:activePaletteIndex bind:value={cpProperty.color}>color1</ColorInput>
+	<button on:click={exchangeColors}>⇋</button>
+	<ColorInput bind:activePaletteIndex bind:value={cpProperty.secondaryColor}>color 2</ColorInput>
 
-		<div class="pattern">
-			<label for="{legend}-pattern">pattern</label>
-			<select
-				id="{legend}-pattern"
-				placeholder="Pattern"
-				value={cpProperty.pattern}
-				on:change={(e) => (cpProperty.pattern = +getInputValue(e))}
-			>
-				{#each Object.values(Patterns)
-					.filter((a) => isNaN(+a))
-					.map((a, i) => i) as index}
-					<option value={index}>{Patterns[index]}</option>
-				{/each}
-			</select>
-		</div>
-	</fieldset>
-</form>
+	<div class="pattern">
+		<label for="{legend}-pattern">pattern</label>
+		<select
+			id="{legend}-pattern"
+			placeholder="Pattern"
+			value={cpProperty.pattern}
+			on:change={(e) => (cpProperty.pattern = +getInputValue(e))}
+		>
+			{#each Object.values(Patterns)
+				.filter((a) => isNaN(+a))
+				.map((a, i) => i) as index}
+				<option value={index}>{Patterns[index]} </option>
+			{/each}
+		</select>
+	</div>
+</fieldset>
 
 <style>
 	.palette__slot {

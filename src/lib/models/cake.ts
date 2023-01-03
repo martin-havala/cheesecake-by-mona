@@ -14,16 +14,26 @@ export enum Decorations {
 
 export enum Patterns {
 	Empty,
+	Hideout,
 	Chevron,
 	DiagonalLines,
+	DiagonalLines2,
+	DiagonalLines3,
+	Dashes,
+	Dashes2,
+	DiagonalDashes,
+	DiagonalDashes2,
 	DiagonalStripes,
 	Diamonds,
 	Dots,
+	CharlieBrown,
 	Poppy,
 	Rain,
 	Sprinkles,
+	Stripes,
 	Triangles,
 	Waves,
+	WavesStacked,
 	Wiggle
 }
 

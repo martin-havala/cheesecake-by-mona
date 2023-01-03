@@ -33,6 +33,7 @@
 >
 	<span class="colorInput__btn--label" style="color:{invertColorBW(value)}"><slot /></span>
 </button>
+
 {#if show}
 	<Palette
 		colors={PALLETES[PALLETE_KEYS[activePaletteIndex]]}
@@ -47,7 +48,7 @@
 		<div slot="header">
 			<select bind:value={activePaletteIndex}>
 				{#each PALLETE_KEYS as key, index}
-					<option value={index} selected={index == activePaletteIndex}>{key}</option>
+					<option value={index} selected={index == activePaletteIndex}>{key} </option>
 				{/each}
 			</select>
 		</div>
@@ -79,10 +80,18 @@
 	.palette__footer input {
 		width: 100%;
 	}
+	:global(.palette__divider) {
+		width: 100% !important;
+		margin-left: 0 !important;
+		border: none;
+		border-bottom: 1px solid var(--color-frames) !important;
+	}
 	:global(.palette__root) {
 		margin: 0 !important;
 		row-gap: 0 !important;
 		padding: 0.5rem !important;
+		background-color: var(--background) !important;
+		border: 1px solid var(--color-frames);
 	}
 	:global(.palette__list) {
 		--numCols: 7 !important;

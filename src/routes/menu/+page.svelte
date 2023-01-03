@@ -123,17 +123,15 @@
 							</div>
 						</button>
 						<div class="label">
-							<form>
-								<textarea
-									cols="13"
-									class="cakeRow__input"
-									value={cake.name}
-									on:change={(e) => {
-										removeCake(cake, true);
-										saveCake({ ...cake, name: e.currentTarget.value }, cake.printOrder ?? 0);
-									}}
-								/>
-							</form>
+							<textarea
+								cols="13"
+								class="cakeRow__input"
+								value={cake.name}
+								on:change={(e) => {
+									removeCake(cake, true);
+									saveCake({ ...cake, name: e.currentTarget.value }, cake.printOrder ?? 0);
+								}}
+							/>
 						</div>
 					</div>
 				</div>

@@ -1,6 +1,7 @@
 import Chevron from '$lib/components/patterns/chevron.svelte';
 import DiagonalLines from '$lib/components/patterns/diagonalLines.svelte';
-import DiagonalStripes from '$lib/components/patterns/diagonalStripes.svelte';
+import DiagonalLines2 from '$lib/components/patterns/diagonalLines2.svelte';
+import DiagonalLines3 from '$lib/components/patterns/diagonalLines3.svelte';
 import Diamonds from '$lib/components/patterns/diamonds.svelte';
 import Dots from '$lib/components/patterns/dots.svelte';
 import Gradient from '$lib/components/patterns/gradient.svelte';
@@ -11,20 +12,41 @@ import Triangles from '$lib/components/patterns/triangles.svelte';
 import Waves from '$lib/components/patterns/waves.svelte';
 import Wiggle from '$lib/components/patterns/wiggle.svelte';
 
+import CharlieBrown from '$lib/components/patterns/charlieBrown.svelte';
+import Dashes from '$lib/components/patterns/dashes.svelte';
+import Dashes2 from '$lib/components/patterns/dashes2.svelte';
+import DiagonalDashes from '$lib/components/patterns/diagonalDashes.svelte';
+import DiagonalDashes2 from '$lib/components/patterns/diagonalDashes2.svelte';
+import Hideout from '$lib/components/patterns/hideout.svelte';
+import Stripes from '$lib/components/patterns/stripes.svelte';
 import { Patterns } from '$lib/models/cake';
 
 export function patternMapper(pattern?: Patterns): any {
 	switch (pattern) {
+		case Patterns.Hideout:
+			return Hideout;
 		case Patterns.DiagonalLines:
 			return DiagonalLines;
-		case Patterns.DiagonalStripes:
-			return DiagonalStripes;
+		case Patterns.DiagonalLines2:
+			return DiagonalLines2;
+		case Patterns.DiagonalLines3:
+			return DiagonalLines3;
+		case Patterns.Dashes:
+			return Dashes;
+		case Patterns.Dashes2:
+			return Dashes2;
+		case Patterns.DiagonalDashes:
+			return DiagonalDashes;
+		case Patterns.DiagonalDashes2:
+			return DiagonalDashes2;
 		case Patterns.Diamonds:
 			return Diamonds;
 		case Patterns.Dots:
 			return Dots;
 		case Patterns.Empty:
 			return Gradient;
+		case Patterns.CharlieBrown:
+			return CharlieBrown;
 		case Patterns.Chevron:
 			return Chevron;
 		case Patterns.Poppy:
@@ -33,6 +55,8 @@ export function patternMapper(pattern?: Patterns): any {
 			return Rain;
 		case Patterns.Sprinkles:
 			return Sprinkles;
+		case Patterns.Stripes:
+			return Stripes;
 		case Patterns.Triangles:
 			return Triangles;
 		case Patterns.Waves:
