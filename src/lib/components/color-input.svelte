@@ -77,7 +77,7 @@
 	}
 	.color-input__palette {
 		position: relative;
-		display: inline-block;
+		display: inline;
 	}
 	.palette__footer {
 		width: 100%;
@@ -106,5 +106,8 @@
 
 	:global(.palette__root) {
 		position: absolute;
+	}
+	:global(.tooltip__button) {
+		display: none;
 	}
 </style>
