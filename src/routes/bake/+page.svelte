@@ -74,50 +74,53 @@
 	<h1>Let's bake</h1>
 	{#if cake}
 		<div class="top-pane">
-			<input bind:value={cake.name} placeholder="Enter cake name" />
-			<button on:click={saveCake} disabled={!cake.name}>Save Cake</button>
-			<fieldset>
-				<legend>Generate</legend>
-				<select
-					bind:value={activePaletteIndex}
-					on:change={(e) => {
-						recreateCake(activePaletteIndex);
-					}}
-				>
-					{#each PALLETE_KEYS as key, index}
-						<option value={index} selected={index == activePaletteIndex}>{key}</option>
-					{/each}
-				</select>
-				<button on:click={(e) => recreateCake(activePaletteIndex)}>ByPallete</button>
-				<button on:click={(e) => recreateCake()}>Random</button>
-				<button on:click={(e) => recreateMonoCake()}>Black/White</button>
-				<button on:click={(e) => recreateMonoCake('#ffd700')}>Gold</button>
-			</fieldset>
-			<fieldset>
-				<legend>Basics (won't change during randomization)</legend>
-				<div class="inset">
-					<label for="style">Render in logo</label>
-					<input id="style" type="checkbox" bind:checked={showAsLogo} />
-				</div>
-				<div class="inset">
-					<label for="style">Render as inset</label>
-					<input id="style" type="checkbox" checked={cake.style == Style.Inset} on:change={changeStyle} />
-				</div>
-				<div class="midSect">
-					<label for="midsection">Layer divider</label>
-					<input id="midsection" type="checkbox" bind:checked={cake.midSection} />
-				</div>
-				<div class="decoration">
-					<label for="decoration">Decoration</label>
-					<select id="decoration" bind:value={cake.decorationType}>
-						{#each Object.keys(Decorations)
-							.filter((a) => isNaN(+a))
-							.map((a, i) => i) as index}
-							<option value={index}>{Decorations[index]}</option>
+			<div class="basics">
+				<input bind:value={cake.name} placeholder="Enter cake name" />
+				<button on:click={saveCake} disabled={!cake.name}>Save Cake</button>
+				<fieldset>
+					<legend>Generate</legend>
+					<select
+						bind:value={activePaletteIndex}
+						on:change={(e) => {
+							recreateCake(activePaletteIndex);
+						}}
+					>
+						{#each PALLETE_KEYS as key, index}
+							<option value={index} selected={index == activePaletteIndex}>{key}</option>
 						{/each}
 					</select>
-				</div>
-			</fieldset>
+					<button on:click={(e) => recreateCake(activePaletteIndex)}>ByPallete</button>
+					<button on:click={(e) => recreateCake()}>Random</button>
+					<button on:click={(e) => recreateMonoCake()}>Black/White</button>
+					<button on:click={(e) => recreateMonoCake('#ffd700')}>Gold</button>
+				</fieldset>
+				<fieldset>
+					<legend>Basics (won't change during randomization)</legend>
+					<div class="inset">
+						<label for="style">Render in logo</label>
+						<input id="style" type="checkbox" bind:checked={showAsLogo} />
+					</div>
+					<div class="inset">
+						<label for="style">Render as inset</label>
+						<input id="style" type="checkbox" checked={cake.style == Style.Inset} on:change={changeStyle} />
+					</div>
+					<div class="midSect">
+						<label for="midsection">Layer divider</label>
+						<input id="midsection" type="checkbox" bind:checked={cake.midSection} />
+					</div>
+					<div class="decoration">
+						<label for="decoration">Decoration</label>
+						<select id="decoration" bind:value={cake.decorationType}>
+							{#each Object.keys(Decorations)
+								.filter((a) => isNaN(+a))
+								.map((a, i) => i) as index}
+								<option value={index}>{Decorations[index]}</option>
+							{/each}
+						</select>
+					</div>
+				</fieldset>
+			</div>
+
 			<div class="cake">
 				{#if showAsLogo}
 					<ByMona id="previewLogo">
@@ -156,7 +159,7 @@
 		width: 100%;
 	}
 
-	.top-pane form {
+	.top-pane .basics {
 		flex: 1 1 50%;
 	}
 	.colorPatterns {
@@ -164,9 +167,7 @@
 		display: flex;
 		flex-wrap: wrap;
 	}
-	.colorPatterns :global(> form) {
-		flex: 1 0 200px;
-	}
+
 	.cake {
 		height: 80%;
 		flex: 1 1 50%;
