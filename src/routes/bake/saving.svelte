@@ -25,6 +25,6 @@
 	<input bind:value={cake.name} placeholder="Enter the cake name" />
 	<button on:click={saveCake} disabled={!cake.name}>Save Cake</button>
 	{#if showMessage}
-		<span class="state">Cake was saved into the local storage!</span>
+		<span class="state">Cake was saved into the database!</span>
 	{/if}
 </fieldset>
