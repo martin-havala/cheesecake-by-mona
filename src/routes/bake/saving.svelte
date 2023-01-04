@@ -1,15 +1,23 @@
 <script lang="ts">
+	import { connect, type byMonaSchema } from '$lib/helpers/indexedDB';
 	import type { CakeDTO } from '$lib/models/cake';
+	import type { IDBPDatabase } from 'idb';
+	import { onDestroy, onMount } from 'svelte';
+	let db: Promise<IDBPDatabase<byMonaSchema>>;
 
 	export let cake: CakeDTO;
 	let showMessage = false;
+
 	const saveCake = () => {
-		if (!!localStorage) {
-			localStorage.setItem(`${cake.name}`, JSON.stringify({ ...cake, default: false }));
+		db.then((d) => {
+			d.put('cakes', cake);
+		}).then((_) => {
 			showMessage = true;
 			setTimeout(() => (showMessage = false), 3_000);
-		}
+		});
 	};
+	onMount(() => (db = connect()));
+	onDestroy(() => db.then((d) => d.close()));
 </script>
 
 <fieldset class="saving">

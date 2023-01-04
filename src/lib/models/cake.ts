@@ -57,6 +57,7 @@ export type CakeArea =
 	| 'fillingTop';
 
 export interface CakeDTO {
+	id?: number;
 	name?: string;
 	printOrder?: number;
 	decorationType: Decoration;

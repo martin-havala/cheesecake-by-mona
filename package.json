@@ -37,6 +37,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@untemps/svelte-palette": "^1.9.2"
+		"@untemps/svelte-palette": "^1.9.2",
+		"idb": "^7.1.1"
 	}
 }

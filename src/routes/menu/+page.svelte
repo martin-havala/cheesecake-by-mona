@@ -1,79 +1,53 @@
 <script lang="ts">
 	import Cake from '$lib/components/cake.svelte';
 	import Print from '$lib/components/print.svelte';
-	import { PRINT_SUFFIX } from '$lib/constants/constants';
-	import { DEFAULT_CAKES } from '$lib/constants/default-cakes';
 	import { getBakeUrl } from '$lib/helpers/bake-url';
 	import { downloadSVG } from '$lib/helpers/download-SVG';
+	import { connect, type byMonaSchema } from '$lib/helpers/indexedDB';
 	import type { CakeDTO } from '$lib/models/cake';
-	import { onMount } from 'svelte';
+	import type { IDBPDatabase } from 'idb';
+	import { onDestroy, onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
-
-	let ls: Storage;
 
 	let cakeList: CakeDTO[] = [];
 	let printList: CakeDTO[] = [];
+	let db: Promise<IDBPDatabase<byMonaSchema>>;
 
 	const saveCake = (cake: CakeDTO, printOrder: number) => {
-		if (!ls) return;
-		ls.setItem(`${cake.name}${printOrder ? PRINT_SUFFIX : ''}`, JSON.stringify({ ...cake, printOrder }));
-		reloadList();
+		db.then((db) => db.put('cakes', { ...cake, printOrder })).then((_) => reloadList());
+	};
+
+	const removePrint = (cake: CakeDTO) => {
+		db.then((db) => db.delete('cakes', cake.id ?? -1)).then((_) => reloadList());
 	};
 
 	const printCake = (cake: CakeDTO) => {
-		saveCake(cake, (printList.at(-1)?.printOrder ?? 0) + 1);
+		saveCake({ ...cake, id: undefined }, (printList.at(-1)?.printOrder ?? 0) + 1);
 	};
 
-	const removeCake = (cake: CakeDTO, print: boolean = false) => {
-		ls.removeItem(`${cake.name}${print ? PRINT_SUFFIX : ''}`);
-		reloadList();
+	const removeCake = (cake: CakeDTO) => {
+		db.then((db) => db.delete('cakes', cake.id ?? -1)).then((_) => reloadList());
 	};
 
-	const reloadList = () => {
-		if (!ls) {
-			return;
-		}
-
-		if (ls.length == 0) {
-			DEFAULT_CAKES.forEach((cake) => saveCake(cake, 0));
-		}
-		const loadedCakes = new Array(ls.length).fill('').reduce(
-			(acc, _, index) => {
-				const key = ls.key(index) as string;
-				const cake = JSON.parse(ls.getItem(key) ?? '') as CakeDTO;
-
-				if (key.includes(PRINT_SUFFIX)) {
-					return {
-						cakeList: acc.cakeList,
-						printList: [...acc.printList, cake]
-					};
-				} else {
-					return {
-						cakeList: [...acc.cakeList, cake],
-						printList: acc.printList
-					};
-				}
-			},
-			{ cakeList: [], printList: [] }
-		);
-
-		cakeList = loadedCakes.cakeList.sort(sortCakesByName);
-		printList = loadedCakes.printList.sort(sortCakesByPrintOrder);
-	};
-
-	function sortCakesByName(a: CakeDTO, b: CakeDTO) {
-		return (a.name ?? '') > (b.name ?? '') ? 1 : -1;
-	}
-	function sortCakesByPrintOrder(a: CakeDTO, b: CakeDTO) {
-		return (a.printOrder ?? 0) > (b.printOrder ?? 1) ? 1 : -1;
+	function reloadList() {
+		db.then((db) => {
+			db.getAllFromIndex('cakes', 'byName').then((cakes) => {
+				[cakeList, printList] = cakes.reduce(
+					(ac, cake) => {
+						return !cake.printOrder ? [[...ac[0], cake], ac[1]] : [ac[0], [...ac[1], cake]];
+					},
+					[[] as CakeDTO[], [] as CakeDTO[]]
+				);
+			});
+		});
 	}
 
 	onMount(() => {
-		if (typeof localStorage !== `undefined`) {
-			ls = localStorage;
-			reloadList();
-		}
+		db = connect();
+		reloadList();
 	});
+
+	onDestroy(() => db.then((d) => d.close()));
 </script>
 
 <svelte:head>
@@ -81,74 +55,76 @@
 	<meta name="description" content="Menu generator" />
 </svelte:head>
 
-<section>
-	<h1>Menu generator</h1>
-	<div class="menu">
-		<div class="cakeList">
-			<div class="menu-header">
-				Stored in memory:
-				<div class="tiny">(Click on image to select it for printing)</div>
-			</div>
-
-			<div class="menu-list">
-				{#each cakeList as cake, index}
-					<div class="cakeRow" in:fly={{ y: -50, duration: 500, delay: 50 * index }}>
-						<div class="cakeRow__item">
-							<button class="cakeRow__button flat" on:click={(e) => printCake(cake)}>
-								<div class="cake">
-									<Cake {cake} />
-								</div>
-							</button>
-							<div class="label">
-								{cake.name}
-								<br />
-								<a class="icobutton flat" href={getBakeUrl(cake)}> <button> Edit </button></a>
-								<button class="" on:click={(e) => removeCake(cake, false)}> Delete </button>
-							</div>
-						</div>
-					</div>
-				{/each}
-			</div>
-		</div>
-		<div class="cakeList printList">
-			<div class="menu-header">
-				<button style="float:right" on:click={(e) => downloadSVG(document.getElementById('print'), 'byMona-menu.svg')}
-					>Download</button
-				>
-				Selected for export:
-				<div class="tiny">(you can edit label of cakes here)</div>
-			</div>
-			<div class="menu-list">
-				<div class="preview">
-					<Print {printList} />
+{#await db then}
+	<section>
+		<h1>Menu generator</h1>
+		<div class="menu">
+			<div class="cakeList">
+				<div class="menu-header">
+					Stored in memory:
+					<div class="tiny">(Click on image to select it for printing)</div>
 				</div>
 
-				{#each printList as cake, index}
-					<div class="cakeRow" in:fly={{ y: -50, duration: 500, delay: 50 * index }}>
-						<div class="cakeRow__item">
-							<button class="cakeRow__button superflat flat" on:click={(e) => removeCake(cake, true)}>
-								<div class="cake">
-									<Cake {cake} />
+				<div class="menu-list">
+					{#each cakeList as cake, index}
+						<div class="cakeRow" in:fly={{ y: -50, duration: 500, delay: 50 * index }}>
+							<div class="cakeRow__item">
+								<button class="cakeRow__button flat" on:click={(e) => printCake(cake)}>
+									<div class="cake">
+										<Cake {cake} />
+									</div>
+								</button>
+								<div class="label">
+									{cake.name}
+									<br />
+									<a class="icobutton flat" href={getBakeUrl(cake)}> <button> Edit </button></a>
+									<button class="" on:click={(e) => removeCake(cake)}> Delete </button>
 								</div>
-							</button>
-							<div class="label">
-								<textarea
-									cols="13"
-									class="cakeRow__input"
-									value={cake.name}
-									on:change={(e) => {
-										removeCake(cake, true);
-										saveCake({ ...cake, name: e.currentTarget.value }, cake.printOrder ?? 0);
-									}}
-								/>
 							</div>
 						</div>
+					{/each}
+				</div>
+			</div>
+			<div class="cakeList printList">
+				<div class="menu-header">
+					<button style="float:right" on:click={(e) => downloadSVG(document.getElementById('print'), 'byMona-menu.svg')}
+						>Download</button
+					>
+					Selected for export:
+					<div class="tiny">(you can edit label of cakes here)</div>
+				</div>
+				<div class="menu-list">
+					<div class="preview">
+						<Print {printList} />
 					</div>
-				{/each}
+
+					{#each printList as cake, index}
+						<div class="cakeRow" in:fly={{ y: -50, duration: 500, delay: 50 * index }}>
+							<div class="cakeRow__item">
+								<button class="cakeRow__button superflat flat" on:click={(e) => removePrint(cake)}>
+									<div class="cake">
+										<Cake {cake} />
+									</div>
+								</button>
+								<div class="label">
+									<textarea
+										cols="13"
+										class="cakeRow__input"
+										value={cake.name}
+										on:change={(e) => {
+											removePrint(cake);
+											saveCake({ ...cake, name: e.currentTarget.value }, cake.printOrder ?? 0);
+										}}
+									/>
+								</div>
+							</div>
+						</div>
+					{/each}
+				</div>
 			</div>
 		</div>
-	</div>
-</section>
+	</section>
+{/await}
 
 <style>
 	.menu {
