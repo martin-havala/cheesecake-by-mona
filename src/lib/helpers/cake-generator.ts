@@ -50,15 +50,15 @@ export function generateCake(allowEmpty = true, paletteIndex?: number): CakeDTO 
 
 	const r = Math.random();
 	switch (true) {
-		case r < 0.25:
+		case r < 0.5:
 			break;
-		case r < 0.66:
+		case r < 0.7:
 			newCake.filling = {
 				...randomColors(selectedPalette),
 				pattern: randomPattern(allowEmpty)
 			};
 			break;
-		case r > 0.66:
+		case r > 0.7:
 			newCake.filling = {
 				...randomColors(selectedPalette),
 

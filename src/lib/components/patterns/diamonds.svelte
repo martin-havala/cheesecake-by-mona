@@ -24,10 +24,10 @@
 		y="0"
 		width="50"
 		height="50"
-		style="fill:{cake[area].color || cake[area2].color || '#000000'};"
+		style="fill:{cake[area].secondaryColor || 'transparent'};"
 	/>
 	<path
 		d="M50 25L37.5 50 25 25 37.5 0zm-25 0L12.5 50 0 25 12.5 0z"
-		style="fill:none;stroke: {cake[area].secondaryColor || cake[area2].secondaryColor || 'transparent'};"
+		style="fill:none;stroke: {cake[area].color || 'transparent'};"
 	/>
 </pattern>

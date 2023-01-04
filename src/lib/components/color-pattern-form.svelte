@@ -12,16 +12,69 @@
 </script>
 
 <fieldset class="color-pattern-form">
-	<legend>{@html legend} <button on:click={(e) => (cpProperty = { pattern: 0 })}>Remove</button></legend>
+	<legend>{@html legend} </legend>
 
-	<ColorInput bind:activePaletteIndex bind:value={cpProperty.color}>color1</ColorInput>
-	<button on:click={exchangeColors}>⇋</button>
-	<ColorInput bind:activePaletteIndex bind:value={cpProperty.secondaryColor}>color 2</ColorInput>
+	<div class="color-pattern__background">
+		<ColorInput bind:activePaletteIndex bind:value={cpProperty.secondaryColor} placeholder="background" />
+	</div>
+	<div class="color-pattern__foreground">
+		<ColorInput bind:activePaletteIndex bind:value={cpProperty.color} placeholder="color" />
+	</div>
 
-	<PatternInput bind:value={cpProperty} {area}/>
+	<button on:click={exchangeColors} class="color-pattern__exchange-btn">⇋</button>
+	<button on:click={(e) => (cpProperty = { pattern: 0 })} class="color-pattern__remove-btn">X</button>
+
+	<div class="color-pattern__pattern">
+		<PatternInput bind:value={cpProperty} {area} />
+	</div>
 </fieldset>
 
-<style>
+<style lang="less">
+	.color-pattern-form {
+		position: relative;
+	}
+	.color-pattern__foreground {
+		position: relative;
+		top: 0;
+		left: 0;
+		width: 2rem;
+		margin: 0 6rem 1rem 0;
+		:global(button) {
+			box-shadow: 0 0 1px 3px var(--color-background);
+		}
+	}
+
+	.color-pattern__background {
+		position: absolute;
+		top: 0.5rem;
+		left: 1rem;
+		width: 3rem;
+	}
+	.color-pattern__exchange-btn {
+		position: absolute;
+		top: .5rem;
+		left: 5rem;
+		margin: 0;
+		line-height: 1em;
+	}
+	.color-pattern__remove-btn {
+		position: absolute;
+		top: .5rem;
+		right: .5rem;
+		margin: 0;
+		line-height: 1em;
+
+	}
+	.color-pattern__pattern {
+		position: absolute;
+		top: 2rem;
+		left: 5rem;
+		right: .5rem;
+		:global(.pattern-input),
+		:global(.pattern-input__button) {
+			width: 100%;
+		}
+	}
 	.palette__slot {
 		cursor: pointer;
 		width: 2rem;
@@ -35,8 +88,5 @@
 
 	fieldset > :global(.tooltip__button) {
 		display: none;
-	}
-	.pattern {
-		margin-top: 0.5rem;
 	}
 </style>

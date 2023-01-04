@@ -12,12 +12,12 @@
 		style: 0,
 		body: colorPattern,
 		bodyStroke: colorPattern,
-		decorationStroke: {},
-		decoration: {},
-		icing: {},
-		icingStroke: {},
-		filling: {},
-		fillingTop: {},
+		decorationStroke: colorPattern,
+		decoration: colorPattern,
+		icing: colorPattern,
+		icingStroke: colorPattern,
+		filling: colorPattern,
+		fillingTop: colorPattern,
 		midSection: true,
 		name: ''
 	};
@@ -61,7 +61,7 @@
 			<div class="pattern-input__placeholder">pattern</div>
 		{:else}
 			<svg viewBox="0 0 50 25">
-				<svelte:component this={patternMapper(value.pattern)} {id} {cake} {area} />
+				<defs><svelte:component this={patternMapper(value.pattern)} {id} {cake} {area} /></defs>
 				<rect x="0" y="0" width="100%" height="100%" style="fill:url(#{area}-{id})" />
 			</svg>
 		{/if}
@@ -116,15 +116,15 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-		width: 3rem;
-		height: 1.5rem;
+		width: 100%;
 		line-height: 1.5rem;
 	}
 
 	.pattern-list {
 		min-width: 12rem;
 		position: absolute;
-		right: 0;
+		right: 50%;
+		transform: translateX(50%);
 		background: var(--color-background);
 		padding: 0.5rem;
 		border: 1px solid var(--color-frames);

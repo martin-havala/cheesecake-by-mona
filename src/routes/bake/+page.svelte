@@ -26,7 +26,7 @@
 		<div class="params">
 			<div class="general">
 				<Saving bind:cake />
-				<div class="colorPattern">
+				<div class="general__group">
 					<Generate bind:cake bind:activePaletteIndex />
 					<Basics bind:cake />
 				</div>
@@ -116,10 +116,16 @@
 		}
 	}
 
-	.colorPattern {
+	.general__group {
 		width: 100%;
-		display: flex;
+		display: inline-flex;
 		flex-wrap: wrap;
 		justify-content: stretch;
+	}
+
+	.colorPattern{
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		float: left;
 	}
 </style>

@@ -24,6 +24,6 @@
 		y="0"
 		width="100%"
 		height="100%"
-		style="fill:{cake[area].color || cake[area2].color};fill:url(#gradient-{area}-{id});"
+		style="fill:{cake[area].secondaryColor};fill:url(#gradient-{area}-{id});"
 	/>
 </pattern>

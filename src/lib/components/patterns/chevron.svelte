@@ -24,8 +24,8 @@
 		y="0"
 		width="100%"
 		height="100%"
-		style="fill:{cake[area].color || cake[area2].color || 'transparent'};"
+		style="fill:{cake[area].secondaryColor || 'transparent'};"
 	/>
 
-	<path d="M-5 5L5.1 15 15 5l10 10" style="stroke: {cake[area].secondaryColor || cake[area2].secondaryColor || 'transparent'};;fill:none" />
+	<path d="M-5 5L5.1 15 15 5l10 10" style="stroke: {cake[area].color || 'transparent'};;fill:none" />
 </pattern>
