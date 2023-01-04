@@ -87,7 +87,7 @@
 		<div class="cakeList">
 			<div class="menu-header">
 				Stored in memory:
-				<div class="tiny">(Click on imago to select it for printing)</div>
+				<div class="tiny">(Click on image to select it for printing)</div>
 			</div>
 
 			<div class="menu-list">

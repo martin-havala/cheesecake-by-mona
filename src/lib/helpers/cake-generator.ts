@@ -75,6 +75,6 @@ export function generateCake(allowEmpty = true, paletteIndex?: number): CakeDTO 
 		newCake.fillingTop = { ...randomColors(selectedPalette), pattern: randomPattern(allowEmpty) };
 	}
 
-	newCake.midSection = Math.random() > 0.5 && newCake.style != Style.Inset;
+	newCake.midSection = Math.random() > 0.5;
 	return newCake;
 }

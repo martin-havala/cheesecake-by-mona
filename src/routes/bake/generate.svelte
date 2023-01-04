@@ -19,20 +19,14 @@
 
 	let recreateCake = (paletteIndex?: number) => {
 		const defaultCake = {
-			...generateCake(true, paletteIndex),
-			style: cake.style,
-			midSection: cake.midSection,
-			decorationType: cake.decorationType
+			...generateCake(true, paletteIndex)
 		};
 		cake = { ...defaultCake };
 	};
 
 	let recreateMonoCake = (light: string = '#ffffff', dark: string = '#000000') => {
 		const defaultCake = {
-			...generateCake(false),
-			style: cake.style,
-			midSection: cake.midSection,
-			decorationType: cake.decorationType
+			...generateCake(false)
 		};
 		cake = {
 			...defaultCake,
