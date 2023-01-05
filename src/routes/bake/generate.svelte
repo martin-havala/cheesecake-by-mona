@@ -18,10 +18,16 @@
 	});
 
 	let recreateCake = (paletteIndex?: number) => {
-		const defaultCake = {
-			...generateCake(true, paletteIndex)
+		cake = {
+			...generateCake(true, paletteIndex, {
+				decorationType: cake.decorationType,
+				style: cake.style,
+				colorOffset: cake.colorOffset,
+				noise: cake.noise,
+				midSection: cake.midSection,
+
+			})
 		};
-		cake = { ...defaultCake };
 	};
 
 	let recreateMonoCake = (light: string = '#ffffff', dark: string = '#000000') => {

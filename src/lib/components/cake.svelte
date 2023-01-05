@@ -17,8 +17,21 @@
 		xmlns="http://www.w3.org/2000/svg"
 		xml:space="preserve"
 	>
-		<CakeContent {cake} {id} />
+		<g class={cake.noise ? 'noiseGrp' : ''}>
+			<g class={cake.colorOffset ? 'offsetGrp' : ''}>
+				<CakeContent {cake} {id} />
+			</g>
+		</g>
 	</svg>
 {:else}
 	<CakeContent {cake} {id} />
 {/if}
+
+<style>
+	.offsetGrp {
+		filter: url(#colorOffset);
+	}
+	.noiseGrp {
+		filter: url(#noise);
+	}
+</style>

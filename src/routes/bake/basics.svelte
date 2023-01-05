@@ -7,8 +7,11 @@
 	};
 </script>
 
-<fieldset class='basics'>
-	<legend>Basics</legend>
+<fieldset class="basics">
+	<legend>
+		Basics
+		<div class="tiny">(won't change in generation)</div>
+	</legend>
 
 	<div class="inset">
 		<label for="style">Render as inset</label>
@@ -17,6 +20,14 @@
 	<div class="midSect">
 		<label for="midsection">Layer divider</label>
 		<input id="midsection" type="checkbox" bind:checked={cake.midSection} />
+	</div>
+	<div class="colorOffset">
+		<label for="colorOffset">Offset colors</label>
+		<input id="colorOffset" type="checkbox" bind:checked={cake.colorOffset} />
+	</div>
+	<div class="noise">
+		<label for="noise">Noise</label>
+		<input id="noise" type="checkbox" bind:checked={cake.noise} />
 	</div>
 	<div class="decoration">
 		<label for="decoration">Decoration</label>
@@ -29,3 +40,10 @@
 		</select>
 	</div>
 </fieldset>
+
+<style>
+	div {
+		display: inline-block;
+		margin: 0.5rem;
+	}
+</style>

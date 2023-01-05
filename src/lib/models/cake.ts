@@ -63,6 +63,8 @@ export interface CakeDTO {
 	decorationType: Decoration;
 	midSection?: boolean;
 	style: Style;
+	noise?: boolean;
+	colorOffset?: boolean;
 
 	body: ColorPattern;
 	bodyStroke: ColorPattern;

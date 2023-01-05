@@ -1,3 +1,4 @@
+/* eslint-disable no-fallthrough */
 import { Pattern, Style, type CakeDTO } from '$lib/models/cake';
 import { PALLETES, PALLETE_KEYS } from '$lib/models/palettes';
 
@@ -10,6 +11,11 @@ export function randomColors(palette: string[], allowEmpty = false) {
 	};
 }
 
+export function randomPattern(allowEmpty = true) {
+	const length = Object.keys(Pattern).filter((a) => isNaN(+a)).length;
+	return Math.floor(Math.random() * (allowEmpty ? length : length - 1)) + (allowEmpty ? 0 : 1);
+}
+
 export function randomStyle() {
 	const r = Math.random();
 	switch (true) {
@@ -19,12 +25,7 @@ export function randomStyle() {
 	return Style.Colour;
 }
 
-export function randomPattern(allowEmpty = true) {
-	const length = Object.keys(Pattern).filter((a) => isNaN(+a)).length;
-	return Math.floor(Math.random() * (allowEmpty ? length : length - 1)) + (allowEmpty ? 0 : 1);
-}
-
-export function generateCake(allowEmpty = true, paletteIndex?: number): CakeDTO {
+export function generateCake(allowEmpty = true, paletteIndex?: number, preset?: Partial<CakeDTO>): CakeDTO {
 	const selectedPaletteIndex =
 		paletteIndex != undefined
 			? paletteIndex % PALLETE_KEYS.length
@@ -48,33 +49,41 @@ export function generateCake(allowEmpty = true, paletteIndex?: number): CakeDTO 
 		newCake.bodyStroke = randomColors(selectedPalette);
 	}
 
-	const r = Math.random();
-	switch (true) {
-		case r < 0.5:
-			break;
-		case r < 0.7:
-			newCake.filling = {
-				...randomColors(selectedPalette),
-				pattern: randomPattern(allowEmpty)
-			};
-			break;
-		case r > 0.7:
-			newCake.filling = {
-				...randomColors(selectedPalette),
-
-				pattern: randomPattern(allowEmpty)
-			};
-			newCake.fillingTop = {
-				...randomColors(selectedPalette),
-				pattern: randomPattern(allowEmpty)
-			};
-	}
+	newCake.midSection = Math.random() > 0.5;
 	if (!allowEmpty) {
 		newCake.icing = { ...randomColors(selectedPalette), pattern: randomPattern(allowEmpty) };
 		newCake.filling = { ...randomColors(selectedPalette), pattern: randomPattern(allowEmpty) };
 		newCake.fillingTop = { ...randomColors(selectedPalette), pattern: randomPattern(allowEmpty) };
+		return newCake;
 	}
 
-	newCake.midSection = Math.random() > 0.5;
-	return newCake;
+	const r = Math.random();
+
+	switch (true) {
+		case r > 0.8:
+			newCake.decoration = {
+				...randomColors(selectedPalette),
+				pattern: randomPattern(allowEmpty)
+			};
+		case r < 0.3:
+			break;
+		case r < 0.4:
+			newCake.icing = {
+				...randomColors(selectedPalette),
+				pattern: randomPattern(allowEmpty)
+			};
+		case r < 0.75:
+			newCake.fillingTop = {
+				...randomColors(selectedPalette),
+				pattern: randomPattern(allowEmpty)
+			};
+		case r < 0.9:
+			newCake.filling = {
+				...randomColors(selectedPalette),
+				pattern: randomPattern(allowEmpty)
+			};
+
+	}
+
+	return { ...newCake, ...preset };
 }
