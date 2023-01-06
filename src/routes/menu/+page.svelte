@@ -22,7 +22,9 @@
 	};
 
 	const printCake = (cake: CakeDTO) => {
-		saveCake({ ...cake, id: undefined }, (printList.at(-1)?.printOrder ?? 0) + 1);
+		const cake2 = cake;
+		delete cake2.id;
+		saveCake(cake2, (printList.at(-1)?.printOrder ?? 0) + 1);
 	};
 
 	const removeCake = (cake: CakeDTO) => {
