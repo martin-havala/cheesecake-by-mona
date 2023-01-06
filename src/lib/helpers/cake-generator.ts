@@ -7,7 +7,7 @@ export function randomColors(palette: string[], allowEmpty = false) {
 	return {
 		color: palette[indices.splice(Math.floor(Math.random() * palette.length), 1)[0]],
 		secondaryColor:
-			!allowEmpty || Math.random() > 0.5 ? palette[indices.splice(Math.floor(Math.random() * palette.length), 1)[0]] : undefined
+			!allowEmpty || Math.random() > 0.5 ? palette[indices.splice(Math.floor(Math.random() * indices.length), 1)[0]] : undefined
 	};
 }
 
@@ -82,7 +82,6 @@ export function generateCake(allowEmpty = true, paletteIndex?: number, preset?: 
 				...randomColors(selectedPalette),
 				pattern: randomPattern(allowEmpty)
 			};
-
 	}
 
 	return { ...newCake, ...preset };
