@@ -25,6 +25,7 @@ export enum Pattern {
 	DiagonalDashes2,
 	Diamonds,
 	Dots,
+	Hearts,
 	CharlieBrown,
 	Poppy,
 	Rain,
@@ -58,6 +59,7 @@ export type CakeArea =
 
 export interface CakeDTO {
 	id?: number;
+	delay?:number;
 	name?: string;
 	printOrder?: number;
 	decorationType: Decoration;

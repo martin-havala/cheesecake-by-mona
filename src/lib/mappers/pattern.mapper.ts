@@ -20,6 +20,7 @@ import DiagonalDashes2 from '$lib/components/patterns/diagonal-dashes-2.svelte';
 import Hideout from '$lib/components/patterns/hideout.svelte';
 import Stripes from '$lib/components/patterns/stripes.svelte';
 import { Pattern } from '$lib/models/cake';
+import Hearts from '$lib/components/patterns/hearts.svelte';
 
 export function patternMapper(pattern?: Pattern): any {
 	switch (pattern) {
@@ -45,6 +46,8 @@ export function patternMapper(pattern?: Pattern): any {
 			return Dots;
 		case Pattern.Empty:
 			return Gradient;
+		case Pattern.Hearts:
+			return Hearts;
 		case Pattern.CharlieBrown:
 			return CharlieBrown;
 		case Pattern.Chevron:

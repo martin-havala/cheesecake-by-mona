@@ -1,0 +1,1 @@
+var a;const e=((a=globalThis.__sveltekit_4aadng)==null?void 0:a.base)??"/cheesecake-by-mona";var s;const t=((s=globalThis.__sveltekit_4aadng)==null?void 0:s.assets)??"https://martin-havala.github.io/cheesecake-by-mona";export{t as a,e as b};

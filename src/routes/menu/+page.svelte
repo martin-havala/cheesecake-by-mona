@@ -60,6 +60,7 @@
 {#await db then}
 	<section>
 		<h1>Menu generator</h1>
+		<p>Manage your stored cakes & quickly generate a printable menu out of them</p>
 		<div class="menu">
 			<div class="cakeList">
 				<div class="menu-header">

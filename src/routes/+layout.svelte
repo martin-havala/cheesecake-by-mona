@@ -32,6 +32,9 @@
 		overflow: hidden;
 		overflow-y: auto;
 	}
+	:global(p) {
+		text-align: center;
+	}
 	.content {
 		max-width: 64rem;
 		margin: auto;

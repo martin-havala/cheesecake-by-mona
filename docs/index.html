@@ -10,24 +10,34 @@
 		<meta property="og:type" content="image/png" />
 		<meta property="og:url" content="https://martin-havala.github.io/cheesecake-by-mona" />
 		<meta http-equiv="content-security-policy" content="">
-		<link rel="modulepreload" href="https://martin-havala.github.io/cheesecake-by-mona/app/immutable/start-a9bae444.js">
-		<link rel="modulepreload" href="https://martin-havala.github.io/cheesecake-by-mona/app/immutable/chunks/index-431f36ca.js">
-		<link rel="modulepreload" href="https://martin-havala.github.io/cheesecake-by-mona/app/immutable/chunks/singletons-2731dfbc.js">
-		<link rel="modulepreload" href="https://martin-havala.github.io/cheesecake-by-mona/app/immutable/chunks/paths-b4419565.js">
+		<link rel="modulepreload" href="https://martin-havala.github.io/cheesecake-by-mona/app/immutable/entry/start.197d426b.js">
+		<link rel="modulepreload" href="https://martin-havala.github.io/cheesecake-by-mona/app/immutable/chunks/index.ff763a08.js">
+		<link rel="modulepreload" href="https://martin-havala.github.io/cheesecake-by-mona/app/immutable/chunks/singletons.f0393853.js">
+		<link rel="modulepreload" href="https://martin-havala.github.io/cheesecake-by-mona/app/immutable/chunks/paths.96154051.js">
+		<link rel="modulepreload" href="https://martin-havala.github.io/cheesecake-by-mona/app/immutable/entry/app.a8c10d54.js">
 	</head>
 	<body data-sveltekit-preload-data="hover">
 		<div style="width: 100vw; height: 100wh; overflow: hidden; display: flex; flex-direction: column; height: 100vh">
 			
-		<script type="module" data-sveltekit-hydrate="45h">
-			import { start } from "https://martin-havala.github.io/cheesecake-by-mona/app/immutable/start-a9bae444.js";
+			<script>
+				{
+					__sveltekit_4aadng = {
+						assets: "https://martin-havala.github.io/cheesecake-by-mona",
+						base: "/cheesecake-by-mona",
+						env: {}
+					};
 
-			start({
-				env: {},
-				paths: {"base":"/cheesecake-by-mona","assets":"https://martin-havala.github.io/cheesecake-by-mona"},
-				target: document.querySelector('[data-sveltekit-hydrate="45h"]').parentNode,
-				version: "1673032310762"
-			});
-		</script>
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("https://martin-havala.github.io/cheesecake-by-mona/app/immutable/entry/start.197d426b.js"),
+						import("https://martin-havala.github.io/cheesecake-by-mona/app/immutable/entry/app.a8c10d54.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element);
+					});
+				}
+			</script>
+		
 		</div>
 	</body>
 </html>

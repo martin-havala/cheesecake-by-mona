@@ -19,11 +19,14 @@
 
 <svelte:head>
 	<title>ByMona</title>
+
 	<meta name="description" content="ByMona logo editor" />
 </svelte:head>
 
 <section>
 	<h1>Generate random logo</h1>
+	<p>Click on logo to get a new cake in there :)</p>
+
 	<button on:click={bakeACake} style="border:none;">
 		<div class="text-column">
 			<ByMona id="byMona">
